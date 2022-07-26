@@ -25,4 +25,8 @@ app.MapControllers();
 app.MapGet("/", () => "Hello world!");
 app.MapGet("/test", () => "Hello world...");
 
+app.MapGet("/api", () => "Hello world...");
+app.MapGet("/api/test", () => "Hello world...");
+
+
 app.Run();

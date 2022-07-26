@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1E1C570D-B121-40E1-8ED3-D6C4EC79344C}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C08B29DB-2911-4AEF-A798-5B2B9C1D3BDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RushRoyale.WebUI", "src\RushRoyale.WebUI\RushRoyale.WebUI.csproj", "{1081750C-A1D6-4F73-974F-A31E831BEFA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RushRoyale.WebAPI", "src\RushRoyale.WebAPI\RushRoyale.WebAPI.csproj", "{25A69D74-6F87-493F-9F1C-8888B478DF7A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1081750C-A1D6-4F73-974F-A31E831BEFA7} = {C08B29DB-2911-4AEF-A798-5B2B9C1D3BDA}
+		{25A69D74-6F87-493F-9F1C-8888B478DF7A} = {C08B29DB-2911-4AEF-A798-5B2B9C1D3BDA}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1081750C-A1D6-4F73-974F-A31E831BEFA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1081750C-A1D6-4F73-974F-A31E831BEFA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1081750C-A1D6-4F73-974F-A31E831BEFA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1081750C-A1D6-4F73-974F-A31E831BEFA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25A69D74-6F87-493F-9F1C-8888B478DF7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25A69D74-6F87-493F-9F1C-8888B478DF7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25A69D74-6F87-493F-9F1C-8888B478DF7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25A69D74-6F87-493F-9F1C-8888B478DF7A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

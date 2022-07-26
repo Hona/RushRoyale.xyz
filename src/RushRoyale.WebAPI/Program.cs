@@ -18,15 +18,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
+app.UsePathBase(new PathString("/api"));
 app.MapControllers();
-
-app.MapGet("/", () => "Hello world!");
-app.MapGet("/test", () => "Hello world...");
-
-app.MapGet("/api", () => "Hello world...");
-app.MapGet("/api/test", () => "Hello world...");
-
 
 app.Run();

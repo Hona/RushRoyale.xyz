@@ -2,6 +2,7 @@
 
 @inject AuthenticationClient AuthenticationClient
 @inject NavigationManager NavigationManager
+@inject HttpClient HttpClient
 
 <MudLayout>
     <MudAppBar Elevation="1">
@@ -34,6 +35,9 @@
 @code {
     private void LoginCallback()
     {
-        AuthenticationClient.LoginAsync(NavigationManager.Uri);
+        var relativeUri = "/api/Authentication/login?returnUrl=" + Uri.EscapeDataString(NavigationManager.Uri);
+        var loginEndpoint = new Uri(HttpClient.BaseAddress, relativeUri);
+        
+        NavigationManager.NavigateTo(loginEndpoint.ToString(), true);
     }
 }

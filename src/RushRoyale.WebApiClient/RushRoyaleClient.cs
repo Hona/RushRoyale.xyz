@@ -53,17 +53,17 @@ namespace RushRoyale.WebApiClient
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task LoginAsync(string returnUrl)
+        public virtual System.Threading.Tasks.Task<string> LoginAsync(string returnUrl)
         {
             return LoginAsync(returnUrl, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task LoginAsync(string returnUrl, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<string> LoginAsync(string returnUrl, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/Authentication/login?");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/Authentication/login?");
             if (returnUrl != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("returnUrl") + "=").Append(System.Uri.EscapeDataString(ConvertToString(returnUrl, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
@@ -77,6 +77,7 @@ namespace RushRoyale.WebApiClient
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -99,17 +100,14 @@ namespace RushRoyale.WebApiClient
                         ProcessResponse(client_, response_);
 
                         var status_ = (int)response_.StatusCode;
-                        if (status_ == 302)
+                        if (status_ == 200)
                         {
-                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("A server side error occurred.", status_, responseText_, headers_, null);
-                        }
-                        else
-
-                        if (status_ == 200 || status_ == 204)
-                        {
-
-                            return;
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
                         }
                         else
                         {

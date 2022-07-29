@@ -18,7 +18,7 @@ public class AuthenticationController : ControllerBase
         _httpContextAccessor = httpContextAccessor;
     }
 
-    [ProducesResponseType(StatusCodes.Status302Found)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
     [HttpGet("login")]
     public IActionResult Login([FromQuery] string returnUrl = "/")
     {

@@ -14,10 +14,6 @@ var apiBaseUrl = builder.Configuration["Api:BaseUrl"];
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(apiBaseUrl ?? throw new InvalidOperationException()) });
 
 builder.Services.AddScoped(x => new AuthenticationClient("", x.GetRequiredService<HttpClient>()));
-
-builder.Services.AddOidcAuthentication(x =>
-{
-    builder.Configuration.Bind("Discord", x.ProviderOptions);
-});
+builder.Services.AddOidcAuthentication(x => {});
 
 await builder.Build().RunAsync();

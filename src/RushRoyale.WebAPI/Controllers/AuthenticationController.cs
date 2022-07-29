@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace RushRoyale.WebAPI.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class AuthenticationController : ControllerBase
 {
     private readonly ILogger<AuthenticationController> _logger;

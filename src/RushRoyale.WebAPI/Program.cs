@@ -30,8 +30,6 @@ if (app.Environment.IsDevelopment())
     );
 }
 
-app.UsePathBase(new PathString("/api"));
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

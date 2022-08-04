@@ -1,0 +1,36 @@
+﻿@page "/wiki/units/{Name}"
+@using RushRoyale.WebUI.Models
+
+@inject DataService DataService
+
+@if (_unit is null)
+{
+    <MudProgressLinear Indeterminate />
+}
+else
+{
+    <UnitCard Value="_unit" />
+}
+
+@code {
+
+    [Parameter]
+    public string Name { get; set; } = null!;
+
+    private Unit? _unit;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        _unit = null;
+        if (Name is null)
+        {
+            throw new ArgumentNullException(nameof(Name));
+        }
+
+        var units = await DataService.GetUnitsAsync();
+        
+        var name = Name.Replace('-', ' ');
+        _unit = units?.FirstOrDefault(x => x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+    }
+
+}

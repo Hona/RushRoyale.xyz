@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MudBlazor.Services;
 using RushRoyale.WebApiClient;
 using RushRoyale.WebUI;
+using RushRoyale.WebUI.Services;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -10,10 +11,17 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddMudServices();
 
+builder.Services.AddHttpClient<DataService>(x =>
+{
+    x.BaseAddress = new Uri(builder.Configuration["UI:BaseUrl"], UriKind.Absolute);
+});
+
+builder.Services.AddSingleton<DataServiceCache>();
+
 var apiBaseUrl = builder.Configuration["Api:BaseUrl"];
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(apiBaseUrl ?? throw new InvalidOperationException()) });
-
-builder.Services.AddScoped(x => new AuthenticationClient("", x.GetRequiredService<HttpClient>()));
-builder.Services.AddOidcAuthentication(x => {});
-
+builder.Services.AddHttpClient<AuthenticationClient>(x =>
+{
+    x.BaseAddress = new Uri(apiBaseUrl ?? throw new InvalidOperationException());
+});
+builder.Services.AddHttpClient();
 await builder.Build().RunAsync();

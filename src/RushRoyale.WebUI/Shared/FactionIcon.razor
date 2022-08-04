@@ -1,0 +1,43 @@
+﻿@using RushRoyale.WebUI.Models
+
+<div @onclick="@HandleClick">
+    <MudImage Src="@("/assets/sprite/" + Value.IconUrl + ".png")" Class="@GetClass()" />
+</div>
+
+@code {
+    [Parameter]
+    public Faction Value { get; set; } = null!;
+    
+    [Parameter]
+    public bool IsSelected { get; set; }
+
+    [Parameter]
+    public Size Size { get; set; }
+
+    [Parameter]
+    public bool IsButton { get; set; }
+    
+    [Parameter]
+    public EventCallback<Faction> OnClick { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        if (Value is null)
+        {
+            throw new ArgumentNullException(nameof(Value));
+        }
+    }
+    
+    private string GetClass() => "faction-icon " + Size.ToString().ToLower() + " " + (IsSelected ? "selected" : "") + " " + (IsButton ? "faction-icon-button" : "");
+
+    private async Task HandleClick()
+    {
+        if (!OnClick.HasDelegate)
+        {
+            return;
+        }
+
+        await OnClick.InvokeAsync(Value);
+    }
+
+}

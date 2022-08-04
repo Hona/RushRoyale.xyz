@@ -1,0 +1,54 @@
+﻿@using RushRoyale.WebUI.Models
+
+@inject NavigationManager NavigationManager
+
+<div class="@GetClass()" @onclick="HandleClick">
+    <MudImage Src="@("assets/sprite/" + Value.IconUrl + ".png")"></MudImage>
+</div>
+@code {
+
+    [Parameter]
+    public Unit Value { get; set; } = null!;
+
+    [Parameter]
+    public Size Size { get; set; } = Size.Medium;
+    
+    [Parameter]
+    public bool IsButton { get; set; }
+
+    private int GetSize() => Size switch
+    {
+        Size.Small => 32,
+        Size.Medium => 64,
+        Size.Large => 128,
+        _ => throw new ArgumentOutOfRangeException()
+    };
+
+    private string GetClass() => "unit " + Size.ToString().ToLower() + " " + (IsButton ? "unit-button" : "") + " " + Value.Rarity switch
+    {
+        Rarity.Common => "unit-common",
+        Rarity.Rare => "unit-rare",
+        Rarity.Epic => "unit-epic",
+        Rarity.Legendary => "unit-legendary",
+        _ => throw new ArgumentOutOfRangeException()
+    };
+
+    protected override void OnParametersSet()
+    {
+        if (Value is null)
+        {
+            throw new ArgumentNullException(nameof(Value));
+        }
+    }
+
+    private void HandleClick()
+    {
+        if (!IsButton)
+        {
+            return;
+        }
+        
+        NavigationManager.NavigateTo("/wiki/units/" + Value.Name.ToLower().Replace(' ', '-'));
+    }
+
+}

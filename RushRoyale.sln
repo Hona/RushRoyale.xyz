@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RushRoyale.WebAPI", "src\Ru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RushRoyale.WebApiClient", "src\RushRoyale.WebApiClient\RushRoyale.WebApiClient.csproj", "{D5A59AB6-0502-49EE-BB3E-70FD87E68BDC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RushRoyale.Application", "src\RushRoyale.Application\RushRoyale.Application.csproj", "{E703F646-189E-4456-B344-4AE51F83D7C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,7 @@ Global
 		{1081750C-A1D6-4F73-974F-A31E831BEFA7} = {C08B29DB-2911-4AEF-A798-5B2B9C1D3BDA}
 		{25A69D74-6F87-493F-9F1C-8888B478DF7A} = {C08B29DB-2911-4AEF-A798-5B2B9C1D3BDA}
 		{D5A59AB6-0502-49EE-BB3E-70FD87E68BDC} = {C08B29DB-2911-4AEF-A798-5B2B9C1D3BDA}
+		{E703F646-189E-4456-B344-4AE51F83D7C1} = {C08B29DB-2911-4AEF-A798-5B2B9C1D3BDA}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{1081750C-A1D6-4F73-974F-A31E831BEFA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -37,5 +40,9 @@ Global
 		{D5A59AB6-0502-49EE-BB3E-70FD87E68BDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5A59AB6-0502-49EE-BB3E-70FD87E68BDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5A59AB6-0502-49EE-BB3E-70FD87E68BDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E703F646-189E-4456-B344-4AE51F83D7C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E703F646-189E-4456-B344-4AE51F83D7C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E703F646-189E-4456-B344-4AE51F83D7C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E703F646-189E-4456-B344-4AE51F83D7C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

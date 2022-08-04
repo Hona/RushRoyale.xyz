@@ -1,0 +1,32 @@
+﻿[
+  {
+    "name": "All",
+    "value": null,
+    "icon": "Fraction_General"
+  },
+  {
+    "name": "Forest Alliance",
+    "value": 0,
+    "icon": "Fraction_ForestUnion"
+  },
+  {
+    "name": "Magic Council",
+    "value": 1,
+    "icon": "Fraction_Magical"
+  },
+  {
+    "name": "Kingdom of Light",
+    "value": 2,
+    "icon": "Fraction_KingdomOfLight"
+  },
+  {
+    "name": "Technogenic Society",
+    "value": 3,
+    "icon": "Fraction_Technologies"
+  },
+  {
+    "name": "Dark Domain",
+    "value": 4,
+    "icon": "Fraction_DarkDomain"
+  }
+]

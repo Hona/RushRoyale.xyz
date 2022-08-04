@@ -1,26 +1,17 @@
 ﻿@inherits LayoutComponentBase
 
-@inject AuthenticationClient AuthenticationClient
-@inject NavigationManager NavigationManager
-@inject HttpClient HttpClient
-
 <MudLayout>
     <MudAppBar Elevation="1">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
         <MudText Typo="Typo.h5" Class="ml-3">
             RushRoyale.xyz
         </MudText>
         <MudSpacer />
-        <AuthorizeView>
-            <Authorized>
-                @context.User.Identity?.Name
-            </Authorized>
-            <NotAuthorized>
-                <MudButton IconColor="Color.Inherit" EndIcon="@Icons.Custom.Brands.Discord" Size="Size.Large" Color="Color.Inherit" OnClick="LoginCallback">
-                    Login
-                </MudButton>
-            </NotAuthorized>
-        </AuthorizeView>
+        <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
     </MudAppBar>
+    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
+        <NavMenu />
+    </MudDrawer>
     <MudMainContent>
         <MudContainer MaxWidth="MaxWidth.Large" Class="mt-4">
             @Body
@@ -33,11 +24,10 @@
 <MudSnackbarProvider/>
 
 @code {
-    private void LoginCallback()
+    bool _drawerOpen = true;
+
+    void DrawerToggle()
     {
-        var relativeUri = "/api/Authentication/login?returnUrl=" + Uri.EscapeDataString(NavigationManager.Uri);
-        var loginEndpoint = new Uri(HttpClient.BaseAddress, relativeUri);
-        
-        NavigationManager.NavigateTo(loginEndpoint.ToString(), true);
+        _drawerOpen = !_drawerOpen;
     }
 }

@@ -1,0 +1,56 @@
+﻿@page "/wiki/units"
+@using Size = RushRoyale.WebUI.Shared.Size
+@using RushRoyale.WebUI.Models
+@inject DataService DataService
+
+@if (_units is null || _factions is null)
+{
+    <MudProgressLinear Indeterminate/>
+}
+else
+{
+    var selectedFaction = _factions.First(x => x.Value == _selectedFaction);
+    <MudAlert Severity="Severity.Info" Class="my-6">
+        @selectedFaction.Name
+    </MudAlert>
+
+    <div class="faction-filter">
+        @foreach (var faction in _factions)
+        {
+            <FactionIcon Size="Size.Medium" Value="faction" IsSelected="faction.Value == _selectedFaction"
+                         IsButton OnClick="clickedFaction => _selectedFaction = clickedFaction.Value"/>
+        }
+    </div>
+    
+    <MudContainer MaxWidth="MaxWidth.Medium">
+        <div class="unit-grid">
+            @{
+                var filteredUnits = _units;
+
+                if (_selectedFaction is not null)
+                {
+                    filteredUnits = filteredUnits.Where(x => x.FactionType == _selectedFaction).ToList().AsReadOnly();
+                }
+            }
+            @foreach (var unit in filteredUnits)
+            {
+                <UnitCard Value="unit" Size="Size.Large" IsButton/>
+            }
+        </div>
+    </MudContainer>
+}
+
+
+@code {
+
+    private IReadOnlyList<Unit>? _units;
+    private IReadOnlyList<Faction>? _factions;
+
+    private FactionType? _selectedFaction = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _units = await DataService.GetUnitsAsync();
+        _factions = await DataService.GetFactionsAsync();
+    }
+}

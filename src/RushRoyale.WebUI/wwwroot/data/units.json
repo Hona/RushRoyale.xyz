@@ -1,0 +1,344 @@
+[
+  {
+    "name": "Archer",
+    "icon": "PawnArcher_icon",
+    "rarity": 0,
+    "faction": 0
+  },
+  {
+    "name": "Bombardier",
+    "icon": "PawnBombardier_icon",
+    "rarity": 0,
+    "faction": 3
+  },
+  {
+    "name": "Cold Mage",
+    "icon": "PawnMageCold_icon",
+    "rarity": 0,
+    "faction": 1
+  },
+  {
+    "name": "Fire Mage",
+    "icon": "PawnMageFire_icon",
+    "rarity": 0,
+    "faction": 1
+  },
+  {
+    "name": "Hunter",
+    "icon": "PawnHunter_icon",
+    "rarity": 0,
+    "faction": 0
+  },
+  {
+    "name": "Lightning Mage",
+    "icon": "PawnMageLightning_icon",
+    "rarity": 0,
+    "faction": 1
+  },
+  {
+    "name": "Poisoner",
+    "icon": "PawnPoisonDart_icon",
+    "rarity": 0,
+    "faction": 0
+  },
+  {
+    "name": "Rogue",
+    "icon": "PawnRogue_icon",
+    "rarity": 0,
+    "faction": 0
+  },
+  {
+    "name": "Thrower",
+    "icon": "PawnSlinger_icon",
+    "rarity": 0,
+    "faction": 2
+  },
+  {
+    "name": "Alchemist",
+    "icon": "PawnAlchemist_icon",
+    "rarity": 1,
+    "faction": 3
+  },
+  {
+    "name": "Banner",
+    "icon": "PawnBanner_icon",
+    "rarity": 1,
+    "faction": 2
+  },
+  {
+    "name": "Magic Cauldron",
+    "icon": "PawnCauldron_icon",
+    "rarity": 1,
+    "faction": 1
+  },
+  {
+    "name": "Chemist",
+    "icon": "PawnCorrosionChemist_icon",
+    "rarity": 1,
+    "faction": 3
+  },
+  {
+    "name": "Grindstone",
+    "icon": "PawnGrindstone_icon",
+    "rarity": 1,
+    "faction": 3
+  },
+  {
+    "name": "Priestess",
+    "icon": "PawnPriestess_icon",
+    "rarity": 1,
+    "faction": 2
+  },
+  {
+    "name": "Sentry",
+    "icon": "PawnSentry_icon",
+    "rarity": 1,
+    "faction": 2
+  },
+  {
+    "name": "Sharpshooter",
+    "icon": "PawnSharpShooter_icon",
+    "rarity": 1,
+    "faction": 3
+  },
+  {
+    "name": "Zealot",
+    "icon": "PawnZealot_icon",
+    "rarity": 1,
+    "faction": 2
+  },
+  {
+    "name": "Catapult",
+    "icon": "PawnCatapult_icon",
+    "rarity": 2,
+    "faction": 2
+  },
+  {
+    "name": "Crystalmancer",
+    "icon": "PawnCrystalmancer_icon",
+    "rarity": 2,
+    "faction": 4
+  },
+  {
+    "name": "Engineer",
+    "icon": "PawnEngineer_icon",
+    "rarity": 2,
+    "faction": 3
+  },
+  {
+    "name": "Gargoyle",
+    "icon": "PawnGargoyle_icon",
+    "rarity": 2,
+    "faction": 2
+  },
+  {
+    "name": "Executioner",
+    "icon": "PawnHeadsman_icon",
+    "rarity": 2,
+    "faction": 4
+  },
+  {
+    "name": "Mime",
+    "icon": "PawnPierrot_icon",
+    "rarity": 2,
+    "faction": 4
+  },
+  {
+    "name": "Plague Doctor",
+    "icon": "PawnPlagueDoctor_icon",
+    "rarity": 2,
+    "faction": 3
+  },
+  {
+    "name": "Ivy",
+    "icon": "PawnPoisonIvy_icon",
+    "rarity": 2,
+    "faction": 0
+  },
+  {
+    "name": "Portal Keeper",
+    "icon": "PawnPortalKeeper_icon",
+    "rarity": 2,
+    "faction": 1
+  },
+  {
+    "name": "Pyrotechnic",
+    "icon": "PawnPyrotechnic_icon",
+    "rarity": 2,
+    "faction": 3
+  },
+  {
+    "name": "Reaper",
+    "icon": "PawnReaper_icon",
+    "rarity": 2,
+    "faction": 4
+  },
+  {
+    "name": "Portal Mage",
+    "icon": "PawnTeleport_icon",
+    "rarity": 2,
+    "faction": 1
+  },
+  {
+    "name": "Thunderer",
+    "icon": "PawnThundercaller_icon",
+    "rarity": 2,
+    "faction": 1
+  },
+  {
+    "name": "Vampire",
+    "icon": "PawnMageVampire_icon",
+    "rarity": 2,
+    "faction": 4
+  },
+  {
+    "name": "Wind Archer",
+    "icon": "PawnWindArcher_icon",
+    "rarity": 2,
+    "faction": 0
+  },
+  {
+    "name": "Bruiser",
+    "icon": "PawnBerserk_icon",
+    "rarity": 3,
+    "faction": 1
+  },
+  {
+    "name": "Blade Dancer",
+    "icon": "PawnBladeDancer_icon",
+    "rarity": 3,
+    "faction": 0
+  },
+  {
+    "name": "Boreas",
+    "icon": "PawnBoreas_icon",
+    "rarity": 3,
+    "faction": 0
+  },
+  {
+    "name": "Corsair",
+    "icon": "PawnCorsair_icon",
+    "rarity": 3,
+    "faction": 3
+  },
+  {
+    "name": "Cultist",
+    "icon": "PawnCultist_icon",
+    "rarity": 3,
+    "faction": 4
+  },
+  {
+    "name": "Demon Hunter",
+    "icon": "PawnDemonHunter_icon",
+    "rarity": 3,
+    "faction": 1
+  },
+  {
+    "name": "Demonologist",
+    "icon": "PawnDemonologist_icon",
+    "rarity": 3,
+    "faction": 4
+  },
+  {
+    "name": "Dryad",
+    "icon": "PawnDryad_icon",
+    "rarity": 3,
+    "faction": 0
+  },
+  {
+    "name": "Frost",
+    "icon": "PawnFrostbite_icon",
+    "rarity": 3,
+    "faction": 4
+  },
+  {
+    "name": "Harlequin",
+    "icon": "PawnHarlequin_icon",
+    "rarity": 3,
+    "faction": 4
+  },
+  {
+    "name": "Inquisitor",
+    "icon": "PawnInquisitor_icon",
+    "rarity": 3,
+    "faction": 2
+  },
+  {
+    "name": "Hex",
+    "icon": "PawnJinx_icon",
+    "rarity": 3,
+    "faction": 4
+  },
+  {
+    "name": "Knight Statue",
+    "icon": "PawnKnightStatue_icon",
+    "rarity": 3,
+    "faction": 2
+  },
+  {
+    "name": "Clock of Power",
+    "icon": "PawnMasterDial_icon",
+    "rarity": 3,
+    "faction": 2
+  },
+  {
+    "name": "Meteor",
+    "icon": "PawnMeteor_icon",
+    "rarity": 3,
+    "faction": 1
+  },
+  {
+    "name": "Minotaur",
+    "icon": "PawnMinotaur_icon",
+    "rarity": 3,
+    "faction": 2
+  },
+  {
+    "name": "Scrapper",
+    "icon": "PawnScrapper_icon",
+    "rarity": 3,
+    "faction": 3
+  },
+  {
+    "name": "Stasis",
+    "icon": "PawnStasis_icon",
+    "rarity": 3,
+    "faction": 1
+  },
+  {
+    "name": "Summoner",
+    "icon": "PawnSummoner_icon",
+    "rarity": 3,
+    "faction": 0
+  },
+  {
+    "name": "Tesla",
+    "icon": "PawnTesla_icon",
+    "rarity": 3,
+    "faction": 3
+  },
+  {
+    "name": "Trapper",
+    "icon": "PawnTrapper_icon",
+    "rarity": 3,
+    "faction": 0
+  },
+  {
+    "name": "Witch",
+    "icon": "PawnWitch_icon",
+    "rarity": 3,
+    "faction": 1
+  },
+  {
+    "name": "Shaman",
+    "icon": "PawnWitchDoctor_icon",
+    "rarity": 3,
+    "faction": 4
+  },
+  {
+    "name": "Robot",
+    "icon": "PawnRobot_icon",
+    "rarity": 3,
+    "faction": 3
+  }
+]

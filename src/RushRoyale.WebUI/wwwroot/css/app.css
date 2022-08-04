@@ -124,3 +124,21 @@
 .faction-icon.faction-icon-button:hover {
     transform: translateY(-5px);
 }
+
+.unit-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mud-alert-message-full-width .mud-alert-position .mud-alert-message {
+    width: 100%;
+}
+
+.unit-info-vertical-slice {
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    justify-content: center;
+}

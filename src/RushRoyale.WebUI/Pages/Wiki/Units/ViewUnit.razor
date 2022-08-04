@@ -1,15 +1,34 @@
 ﻿@page "/wiki/units/{Name}"
 @using RushRoyale.WebUI.Models
+@using Size = RushRoyale.WebUI.Shared.Size
 
 @inject DataService DataService
 
-@if (_unit is null)
+@if (_unit is null || _faction is null)
 {
     <MudProgressLinear Indeterminate />
 }
 else
 {
-    <UnitCard Value="_unit" />
+    <MudContainer MaxWidth="MaxWidth.Small">
+        <MudAlert Severity="Severity.Info" NoIcon Class="mud-alert-message-full-width mb-4">
+            <div class="unit-info-header">
+                <UnitCard Value="_unit"/>
+                <div class="unit-info-vertical-slice">
+                    <MudText Typo="Typo.h5" Color="Color.Primary">
+                        @_unit.Name
+                    </MudText>
+                    <RarityChip Value="_unit.Rarity"/>
+                </div>
+                <FactionIcon Value="_faction" Size="Size.Medium"/>
+            </div>
+        </MudAlert>
+        <MudPaper Class="px-4 py-4">
+            <MudText>
+                @_unit.Description
+            </MudText>
+        </MudPaper>
+    </MudContainer>
 }
 
 @code {
@@ -18,6 +37,7 @@ else
     public string Name { get; set; } = null!;
 
     private Unit? _unit;
+    private Faction? _faction;
 
     protected override async Task OnParametersSetAsync()
     {
@@ -31,6 +51,8 @@ else
         
         var name = Name.Replace('-', ' ');
         _unit = units?.FirstOrDefault(x => x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+        var factions = await DataService.GetFactionsAsync();
+        _faction = factions?.First(x => x.Value == _unit?.FactionType);
     }
 
 }

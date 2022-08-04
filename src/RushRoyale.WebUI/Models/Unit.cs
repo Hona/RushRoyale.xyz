@@ -8,4 +8,5 @@ public class Unit
     [JsonPropertyName("icon")] public string IconUrl { get; set; } = null!;
     public Rarity Rarity { get; set; }
     [JsonPropertyName("faction")] public FactionType FactionType { get; set; }
+    public string Description { get; set; } = null!;
 }

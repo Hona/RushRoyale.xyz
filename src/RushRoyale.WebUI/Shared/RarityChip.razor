@@ -1,0 +1,24 @@
+﻿@using RushRoyale.WebUI.Models
+
+@switch (Value)
+{
+    case Rarity.Common:
+        <MudChip Color="Color.Dark">Common</MudChip>
+        break;
+    case Rarity.Rare:
+        <MudChip Color="Color.Info">Rare</MudChip>
+        break;
+    case Rarity.Epic:
+        <MudChip Color="Color.Primary">Epic</MudChip>
+        break;
+    case Rarity.Legendary:
+        <MudChip Color="Color.Warning">Legendary</MudChip>
+        break;
+    default:
+        throw new ArgumentOutOfRangeException();
+}
+
+@code {
+    [Parameter]
+    public Rarity Value { get; set; }
+}

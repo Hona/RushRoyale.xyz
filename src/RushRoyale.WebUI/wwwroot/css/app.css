@@ -61,19 +61,19 @@
 }
 
 .unit-common {
-    background-image: url("/assets/sprite/plate-default.png");
+    background-image: url("/assets/Sprite/plate-default.png");
 }
 
 .unit-rare {
-    background-image: url("/assets/sprite/plate-blue.png");
+    background-image: url("/assets/Sprite/plate-blue.png");
 }
 
 .unit-epic {
-    background-image: url("/assets/sprite/plate-purple.png");
+    background-image: url("/assets/Sprite/plate-purple.png");
 }
 
 .unit-legendary {
-    background-image: url("/assets/sprite/plate-orange.png");
+    background-image: url("/assets/Sprite/plate-orange.png");
 }
 
 .faction-icon {

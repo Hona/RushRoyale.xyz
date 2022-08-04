@@ -1,0 +1,18 @@
+﻿<MudImage Width="32" Height="32" Src="@GetSrc()" Class="@Class"/>
+
+@code {
+    [Parameter]
+    public int Level { get; set; }
+
+    [Parameter]
+    public string? Class { get; set; }
+
+    private string GetSrc() => Level switch 
+    {
+        9 => "/assets/sprite/Ascension_notifications_Grey.png",
+        11 => "/assets/sprite/Ascension_notifications_Blue.png",
+        13 => "/assets/sprite/Ascension_notifications_Pink.png",
+        15 => "/assets/sprite/Ascension_notifications_Yellow_small.png",
+        _ => throw new ArgumentOutOfRangeException()
+    };
+}

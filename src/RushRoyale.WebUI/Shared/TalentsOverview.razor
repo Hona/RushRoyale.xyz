@@ -10,25 +10,24 @@ else
 {
     <div class="talents-container">
         <div class="talents talents-9">
-            @foreach (var talent in Value.Level9)
-            {
-                <TalentCard Value="talent"/>
-            }
+            <TalentCard Value="Value.Level9[0]"/>
+            <AscensionIcon Level="9"/>
+            <TalentCard Value="Value.Level9[1]"/>
         </div>
         <div class="talents talents-11">
-            @foreach (var talent in Value.Level11)
-            {
-                <TalentCard Value="talent"/>
-            }
+            <TalentCard Value="Value.Level11[0]"/>
+            <AscensionIcon Level="11"/>
+            <TalentCard Value="Value.Level11[1]"/>
         </div>
         <div class="talents talents-13">
-            @foreach (var talent in Value.Level13)
-            {
-                <TalentCard Value="talent"/>
-            }
+            <TalentCard Value="Value.Level13[0]"/>
+            <AscensionIcon Level="13"/>
+            <TalentCard Value="Value.Level13[1]"/>
         </div>
         <div class="talent talents-15">
+            <AscensionIcon Level="15" Class="ascension-left"/>
             <TalentCard Value="Value.Level15"/>
+            <AscensionIcon Level="15" Class="ascension-right"/>
         </div>
     </div>
 }

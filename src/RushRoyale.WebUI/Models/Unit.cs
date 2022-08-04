@@ -9,4 +9,5 @@ public class Unit
     public Rarity Rarity { get; set; }
     [JsonPropertyName("faction")] public FactionType FactionType { get; set; }
     public string Description { get; set; } = null!;
+    public UnitTalents? Talents { get; set; } 
 }

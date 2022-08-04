@@ -18,7 +18,50 @@
     "icon": "PawnMageCold_icon",
     "rarity": 0,
     "faction": 1,
-    "description": "Lowers target's movement speed on every hit."
+    "description": "Lowers target's movement speed on every hit.",
+    "talents": {
+      "9": [
+        {
+          "name": "Deep Freeze",
+          "description": "Every 15 attacks, the Cold Mage freezes monsters for 4s. This effect activates once.",
+          "icon": "Icon_PawnMageCold_Talents_1a"
+        },
+        {
+          "name": "Fierce Cold",
+          "description": "Slows the target by an additional 5% on top of the max amount.",
+          "icon": "Icon_PawnMageCold_Talents_1b"
+        }
+      ],
+      "11": [
+        {
+          "name": "Heat Leak",
+          "description": "When the Cold mage merges, a random unit on the opponent's field freezes for 6s. Duration increases with the merge rank. Does not work in Co-Op and Clan Tournament Attack.",
+          "icon": "Icon_PawnMageCold_Talents_2a"
+        },
+        {
+          "name": "Flash of Frost",
+          "description": "When the Cold Mage merges, 3 monsters on the path are slowed by the max amount. The number of monsters increases based on the Cold Mage's merge rank.",
+          "icon": "Icon_PawnMageCold_Talents_2b"
+        }
+      ],
+      "13": [
+        {
+          "name": "Blizzard",
+          "description": "Has a 7% chance on attack to affect the taret with a blizzard, slowing monsters in the area.",
+          "icon": "Icon_PawnMageCold_Talents_3a"
+        },
+        {
+          "name": "Cracking Ice",
+          "description": "Frozen targets with health below 30% take 20% more damage.",
+          "icon": "Icon_PawnMageCold_Talents_3b"
+        }
+      ],
+      "15": {
+        "name": "Deadly Cold",
+        "description": "Frozen targets die if their health drops below 5%.",
+        "icon": "Icon_PawnMageCold_Talents_4"
+      }
+    }
   },
   {
     "name": "Fire Mage",

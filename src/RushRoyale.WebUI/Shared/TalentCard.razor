@@ -1,0 +1,17 @@
+﻿@using RushRoyale.WebUI.Models
+
+<MudImage Src="@("/assets/sprite/" + Value.IconUrl + ".png")" Width="48" Fluid/>
+
+@code {
+    [Parameter]
+    public Talent Value { get; set; } = null!;
+
+    protected override void OnParametersSet()
+    {
+        if (Value is null)
+        {
+            throw new ArgumentNullException(nameof(Value));
+        }
+    }
+
+}

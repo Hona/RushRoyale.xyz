@@ -142,3 +142,28 @@
     align-items: center;
     justify-content: center;
 }
+
+.talents-container {
+    background: linear-gradient(90deg, transparent 48.99%, var(--mud-palette-dark) 49%, var(--mud-palette-dark) 51%, transparent 51.01%);
+}
+
+.talents-container .talents {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 0;
+    margin: 0 1rem 0 0;
+    
+    background: linear-gradient(0deg, transparent 44.99%, var(--mud-palette-dark) 45%, var(--mud-palette-dark) 55%, transparent 55.01%);
+}
+
+.talents-container .talent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 0 0 0;
+    margin: 0 1rem 1rem 0;
+}
+

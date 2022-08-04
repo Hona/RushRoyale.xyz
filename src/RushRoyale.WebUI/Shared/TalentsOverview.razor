@@ -1,0 +1,39 @@
+﻿@using RushRoyale.WebUI.Models
+
+@if (Value is null)
+{
+    <MudText>
+        This unit has no Talents yet...
+    </MudText>
+}
+else
+{
+    <div class="talents-container">
+        <div class="talents talents-9">
+            @foreach (var talent in Value.Level9)
+            {
+                <TalentCard Value="talent"/>
+            }
+        </div>
+        <div class="talents talents-11">
+            @foreach (var talent in Value.Level11)
+            {
+                <TalentCard Value="talent"/>
+            }
+        </div>
+        <div class="talents talents-13">
+            @foreach (var talent in Value.Level13)
+            {
+                <TalentCard Value="talent"/>
+            }
+        </div>
+        <div class="talent talents-15">
+            <TalentCard Value="Value.Level15"/>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public UnitTalents? Value { get; set; }
+}

@@ -34,7 +34,9 @@ else
             }
             @foreach (var unit in filteredUnits)
             {
-                <UnitCard Value="unit" Size="Size.Large" IsButton/>
+                <div class="unit-wrapper">
+                    <UnitCard Value="unit" Size="Size.Large" IsButton/>
+                </div>
             }
         </div>
     </MudContainer>

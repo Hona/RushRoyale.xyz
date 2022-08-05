@@ -1,0 +1,40 @@
+﻿@page "/developer/data-editor"
+@using System.Reflection
+@using System.Text.Json
+
+@if (_dataSources is null)
+{
+    <MudProgressLinear Indeterminate />
+}
+else
+{
+    <MudButtonGroup Color="Color.Primary" Variant="Variant.Outlined">
+        @foreach (var (dataSourceName, dataSourceMethod) in _dataSources)
+        {
+            <MudButton Href="@("/developer/data-editor/" + dataSourceMethod.Name)">@(dataSourceName)s</MudButton>
+        }
+    </MudButtonGroup>
+}
+
+@code {
+    private Dictionary<string, MethodInfo>? _dataSources;
+
+    protected override void OnInitialized()
+    {
+        var dataServiceType = typeof(DataService);
+        var publicMethods = dataServiceType.GetMethods(BindingFlags.Public | BindingFlags.Instance).ToList();
+
+        
+        // Filter by Task`1
+        publicMethods = publicMethods.Where(x => x.ReturnType.Name == "Task`1")
+            .Where(x =>
+            {
+                var genericArguments = x.ReturnType.GetGenericArguments();
+                return genericArguments.Length == 1 && genericArguments[0].Name == "IReadOnlyList`1";
+            }).ToList();
+
+        _dataSources = publicMethods
+            .ToDictionary(m => m.ReturnType.GetGenericArguments()[0].GetGenericArguments()[0].Name, m => m);
+
+    }
+}

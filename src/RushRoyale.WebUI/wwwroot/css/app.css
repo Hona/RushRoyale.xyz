@@ -223,3 +223,8 @@
     transform: rotate(45deg);
     margin: 0 1rem;
 }
+
+.mud-dialog .outline-none {
+    max-height: 90vh;
+    overflow-y: scroll;
+}

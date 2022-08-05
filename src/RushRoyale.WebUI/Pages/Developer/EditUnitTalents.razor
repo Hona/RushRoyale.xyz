@@ -1,0 +1,34 @@
+﻿<MudExpansionPanels>
+    <MudExpansionPanel Text="Level 9">
+        <DeveloperTalentForm Value="@Value.Level9[0]"/>
+        <MudDivider Class="my-4" />
+        <DeveloperTalentForm Value="@Value.Level9[1]"/>
+    </MudExpansionPanel>
+
+    <MudExpansionPanel Text="Level 11">
+        <DeveloperTalentForm Value="@Value.Level11[0]"/>
+        <MudDivider Class="my-4" />
+        <DeveloperTalentForm Value="@Value.Level11[1]"/>
+    </MudExpansionPanel>
+
+    <MudExpansionPanel Text="Level 13">
+        <DeveloperTalentForm Value="@Value.Level13[0]"/>
+        <MudDivider Class="my-4" />
+        <DeveloperTalentForm Value="@Value.Level13[1]"/>
+    </MudExpansionPanel>
+
+    <MudExpansionPanel Text="Level 15">
+        <DeveloperTalentForm Value="@Value.Level15"/>
+    </MudExpansionPanel>
+</MudExpansionPanels>
+
+@code
+{
+    [Parameter]
+    public UnitTalents Value { get; set; } = null!;
+
+    protected override void OnParametersSet()
+    {
+        ArgumentNullException.ThrowIfNull(Value);
+    }
+}

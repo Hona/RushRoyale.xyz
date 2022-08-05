@@ -1,0 +1,19 @@
+﻿<MudForm Model="Value">
+    <MudTextField @bind-Value="Value.Name" Label="@nameof(Value.Name)" />
+    <MudTextField @bind-Value="Value.IconUrl" Label="@nameof(Value.Name)" />
+    <MudTextField @bind-Value="Value.Description" Label="@nameof(Value.Name)" />
+</MudForm>
+
+@code {
+    [Parameter]
+    public Talent Value { get; set; } = null!;
+
+    protected override void OnParametersSet()
+    {
+        if (Value is null)
+        {
+            throw new ArgumentNullException(nameof(Value));
+        }
+    }
+
+}

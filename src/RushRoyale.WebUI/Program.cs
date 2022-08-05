@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MudBlazor.Services;
 using RushRoyale.WebApiClient;
 using RushRoyale.WebUI;
+using RushRoyale.WebUI.Models;
 using RushRoyale.WebUI.Services;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -15,6 +16,8 @@ builder.Services.AddHttpClient<DataService>(x =>
 {
     x.BaseAddress = new Uri(builder.Configuration["UI:BaseUrl"], UriKind.Absolute);
 });
+
+builder.Services.Configure<Developer>(builder.Configuration.GetSection(nameof(Developer)));
 
 builder.Services.AddSingleton<DataServiceCache>();
 

@@ -1,0 +1,78 @@
+﻿<MudDataGrid ReadOnly="false" T="Unit" Items="Items" EditMode="DataGridEditMode.Form" EditTrigger="DataGridEditTrigger.OnRowClick" Hover Dense StartedEditingItem="HandleStartedEditingItem">
+    <Columns>
+        <Column T="Unit" Field="@nameof(Unit.Name)" IsEditable/>
+        <Column T="Unit" Field="@nameof(Unit.IconUrl)" IsEditable/>
+        <Column T="Unit" Field="@nameof(Unit.Rarity)" IsEditable>
+            <EditTemplate>
+                <MudSelect @bind-Value="context.Item.Rarity" Required Variant="Variant.Outlined" Margin="Margin.Dense" Label="@nameof(Rarity)" Class="mt-4" Style="width: 65vw">
+                    @foreach (var rarity in Enum.GetValues<Rarity>())
+                    {
+                        <MudSelectItem Value="@rarity">
+                            @rarity.Humanize()
+                        </MudSelectItem>
+                    }
+                </MudSelect>
+            </EditTemplate>
+        </Column>
+        <Column T="Unit" Field="@nameof(Unit.FactionType)" IsEditable>
+            <EditTemplate>
+                <MudSelect @bind-Value="context.Item.FactionType" Required Variant="Variant.Outlined" Margin="Margin.Dense" Label="@nameof(Faction)" Class="mt-4" Style="width: 65vw">
+                    @foreach (var faction in Enum.GetValues<FactionType>())
+                    {
+                        <MudSelectItem Value="@faction">
+                            @faction.Humanize(LetterCasing.Title)
+                        </MudSelectItem>
+                    }
+                </MudSelect>
+            </EditTemplate>
+        </Column>
+        <Column T="Unit" Field="@nameof(Unit.Description)" IsEditable/>
+        <Column T="Unit" Field="@nameof(Unit.Talents)" IsEditable>
+            <CellTemplate>
+                @if (context.Item.Talents is not null)
+                {
+                    <MudIcon Icon="@Icons.Filled.Check"/>
+                }
+            </CellTemplate>
+            <EditTemplate>
+                <MudCheckBox Checked="@_talentsEnabled" CheckedChanged="@((bool isChecked) => { _talentsEnabled = isChecked; if (!_talentsEnabled) {context.Item.Talents = null;}})">
+                    Has Talents?
+                </MudCheckBox>
+
+                @if (_talentsEnabled)
+                {
+                    context.Item.Talents ??= new UnitTalents();
+                    <EditUnitTalents Value="context.Item.Talents"/>
+                }
+            </EditTemplate>
+        </Column>
+    </Columns>
+</MudDataGrid>
+
+@code {
+    [Parameter]
+    public List<Unit> Items { get; set; } = null!;
+    
+    [Parameter]
+    public EventCallback<List<Unit>> ItemsChanged { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        if (Items is null)
+        {
+            throw new ArgumentNullException(nameof(Items));
+        }
+        
+        _talentsEnabled = false;
+        _temporaryTalents = null;
+    }
+
+    private bool _talentsEnabled;
+    private UnitTalents? _temporaryTalents;
+
+    private void HandleStartedEditingItem(Unit unit)
+    {
+        _talentsEnabled = unit.Talents is not null;
+    }
+
+}

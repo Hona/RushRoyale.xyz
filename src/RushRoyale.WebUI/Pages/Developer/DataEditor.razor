@@ -1,0 +1,68 @@
+﻿@page "/developer/data-editor/{MethodName}"
+@using System.Text.Json
+@using System.Runtime.Serialization
+@using System.Runtime.Serialization.Formatters.Binary
+@using System.Text
+
+@inject DataService DataService
+@inject IJSRuntime JS
+
+@if (_data is null)
+{
+    <MudProgressLinear Indeterminate />
+}
+else
+{
+    <MudButtonGroup Color="Color.Inherit" Variant="Variant.Outlined" Class="my-4" OverrideStyles="false">
+        <MudButton Color="Color.Warning" OnClick="async () => await OnParametersSetAsync()">Reset</MudButton>
+        <MudButton Color="Color.Secondary" OnClick="ExportDataAsync">Export</MudButton>
+    </MudButtonGroup>
+ 
+    <GenericDataGrid Items="_data" />
+}
+
+@code {
+
+    [Parameter]
+    public string MethodName { get; set; } = null!;
+
+    private List<object>? _data;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        _data = null;
+        
+        // Invoke method from methodinfo hash using reflection
+        var methodInfo = typeof(DataService).GetMethod(MethodName);
+
+        if (methodInfo is null)
+        {
+            throw new ArgumentNullException(nameof(methodInfo));
+        }
+        
+        var outputTask = (Task)methodInfo.Invoke(DataService, new object[]{ CancellationToken.None } );
+        await outputTask;
+
+        var resultProperty = outputTask.GetType().GetProperty("Result");
+        var taskOutput = resultProperty.GetValue(outputTask);
+
+        // Convert object to list of unknown type
+        var list = new List<object>();
+        list.AddRange(taskOutput as IEnumerable<object>);
+
+        _data = list.ToList();
+    }
+    
+    private async Task ExportDataAsync()
+    {
+        var exportString = JsonSerializer.Serialize(_data, new JsonSerializerOptions
+        {
+            WriteIndented = true
+        });
+        
+        var fileName = $"rushroyale.xyz-export-{DateTime.Now}.json";
+        
+        var file = Encoding.UTF8.GetBytes(exportString);
+        await JS.InvokeVoidAsync("BlazorDownloadFile", fileName, "application/json", file);
+    }
+}

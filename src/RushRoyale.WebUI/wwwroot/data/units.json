@@ -4,61 +4,63 @@
     "icon": "PawnArcher_icon",
     "rarity": 0,
     "faction": 0,
-    "description": "Has high attack speed."
+    "description": "Has high attack speed.",
+    "talents": null
   },
   {
     "name": "Bombardier",
     "icon": "PawnBombardier_icon",
     "rarity": 0,
     "faction": 3,
-    "description": "Has a chance to stun the target. Chance of subsequent stuns is decreased."
+    "description": "Has a chance to stun the target. Chance of subsequent stuns is decreased.",
+    "talents": null
   },
   {
     "name": "Cold Mage",
     "icon": "PawnMageCold_icon",
     "rarity": 0,
     "faction": 1,
-    "description": "Lowers target's movement speed on every hit.",
+    "description": "Lowers target\u0027s movement speed on every hit.",
     "talents": {
       "9": [
         {
-          "name": "Deep Freeze",
-          "description": "Every 15 attacks, the Cold Mage freezes monsters for 4s. This effect activates once.",
+          "Name": "Deep Freeze",
+          "Description": "Every 15 attacks, the Cold Mage freezes monsters for 4s. This effect activates once.",
           "icon": "Icon_PawnMageCold_Talents_1a"
         },
         {
-          "name": "Fierce Cold",
-          "description": "Slows the target by an additional 5% on top of the max amount.",
+          "Name": "Fierce Cold",
+          "Description": "Slows the target by an additional 5% on top of the max amount.",
           "icon": "Icon_PawnMageCold_Talents_1b"
         }
       ],
       "11": [
         {
-          "name": "Heat Leak",
-          "description": "When the Cold mage merges, a random unit on the opponent's field freezes for 6s. Duration increases with the merge rank. Does not work in Co-Op and Clan Tournament Attack.",
+          "Name": "Heat Leak",
+          "Description": "When the Cold mage merges, a random unit on the opponent\u0027s field freezes for 6s. Duration increases with the merge rank. Does not work in Co-Op and Clan Tournament Attack.",
           "icon": "Icon_PawnMageCold_Talents_2a"
         },
         {
-          "name": "Flash of Frost",
-          "description": "When the Cold Mage merges, 3 monsters on the path are slowed by the max amount. The number of monsters increases based on the Cold Mage's merge rank.",
+          "Name": "Flash of Frost",
+          "Description": "When the Cold Mage merges, 3 monsters on the path are slowed by the max amount. The number of monsters increases based on the Cold Mage\u0027s merge rank.",
           "icon": "Icon_PawnMageCold_Talents_2b"
         }
       ],
       "13": [
         {
-          "name": "Blizzard",
-          "description": "Has a 7% chance on attack to affect the taret with a blizzard, slowing monsters in the area.",
+          "Name": "Blizzard",
+          "Description": "Has a 7% chance on attack to affect the taret with a blizzard, slowing monsters in the area.",
           "icon": "Icon_PawnMageCold_Talents_3a"
         },
         {
-          "name": "Cracking Ice",
-          "description": "Frozen targets with health below 30% take 20% more damage.",
+          "Name": "Cracking Ice",
+          "Description": "Frozen targets with health below 30% take 20% more damage.",
           "icon": "Icon_PawnMageCold_Talents_3b"
         }
       ],
       "15": {
-        "name": "Deadly Cold",
-        "description": "Frozen targets die if their health drops below 5%.",
+        "Name": "Deadly Cold",
+        "Description": "Frozen targets die if their health drops below 5%.",
         "icon": "Icon_PawnMageCold_Talents_4"
       }
     }
@@ -68,377 +70,431 @@
     "icon": "PawnMageFire_icon",
     "rarity": 0,
     "faction": 1,
-    "description": "Deals damage in an area around the target."
+    "description": "Deals damage in an area around the target.",
+    "talents": null
   },
   {
     "name": "Hunter",
     "icon": "PawnHunter_icon",
     "rarity": 0,
     "faction": 0,
-    "description": "The first shot at a target deals increased damage. Damage also grows with merge rank."
+    "description": "The first shot at a target deals increased damage. Damage also grows with merge rank.",
+    "talents": null
   },
   {
     "name": "Lightning Mage",
     "icon": "PawnMageLightning_icon",
     "rarity": 0,
     "faction": 1,
-    "description": "Deals lightning damage to the first three targets (100%, 70% and 30% respectively)."
+    "description": "Deals lightning damage to the first three targets (100%, 70% and 30% respectively).",
+    "talents": null
   },
   {
     "name": "Poisoner",
     "icon": "PawnPoisonDart_icon",
     "rarity": 0,
     "faction": 0,
-    "description": "Poisons enemies, dealing damage over time. Damage from poison increases with each merge rank."
+    "description": "Poisons enemies, dealing damage over time. Damage from poison increases with each merge rank.",
+    "talents": null
   },
   {
     "name": "Rogue",
     "icon": "PawnRogue_icon",
     "rarity": 0,
     "faction": 0,
-    "description": "Damage per strike increases by a random number between 1 and your critical damage value."
+    "description": "Damage per strike increases by a random number between 1 and your critical damage value.",
+    "talents": null
   },
   {
     "name": "Thrower",
     "icon": "PawnSlinger_icon",
     "rarity": 0,
     "faction": 2,
-    "description": "Attacks a random target."
+    "description": "Attacks a random target.",
+    "talents": null
   },
   {
     "name": "Alchemist",
     "icon": "PawnAlchemist_icon",
     "rarity": 1,
     "faction": 3,
-    "description": "Periodically creates a puddle of acid that deals damage to monsters. The trap's damage increases with each merge rank."
+    "description": "Periodically creates a puddle of acid that deals damage to monsters. The trap\u0027s damage increases with each merge rank.",
+    "talents": null
   },
   {
     "name": "Banner",
     "icon": "PawnBanner_icon",
     "rarity": 1,
     "faction": 2,
-    "description": "Increases attack speed for four neighboring units based on merge rank."
+    "description": "Increases attack speed for four neighboring units based on merge rank.",
+    "talents": null
   },
   {
     "name": "Magic Cauldron",
     "icon": "PawnCauldron_icon",
     "rarity": 1,
     "faction": 1,
-    "description": "Produces mana every several seconds. The amount of mana produced increases in proportion to the merging rank."
+    "description": "Produces mana every several seconds. The amount of mana produced increases in proportion to the merging rank.",
+    "talents": null
   },
   {
     "name": "Chemist",
     "icon": "PawnCorrosionChemist_icon",
     "rarity": 1,
     "faction": 3,
-    "description": "Increases damage taken by the target. The damage buff grows with each merge rank."
+    "description": "Increases damage taken by the target. The damage buff grows with each merge rank.",
+    "talents": null
   },
   {
     "name": "Grindstone",
     "icon": "PawnGrindstone_icon",
     "rarity": 1,
     "faction": 3,
-    "description": "Increases critical damage chance for four neighboring units based on merge rank."
+    "description": "Increases critical damage chance for four neighboring units based on merge rank.",
+    "talents": null
   },
   {
     "name": "Priestess",
     "icon": "PawnPriestess_icon",
     "rarity": 1,
     "faction": 2,
-    "description": "Gives mana when merged or killed."
+    "description": "Gives mana when merged or killed.",
+    "talents": null
   },
   {
     "name": "Sentry",
     "icon": "PawnSentry_icon",
     "rarity": 1,
     "faction": 2,
-    "description": "Gradually increases damage dealt in 10% increments. As the merging rank becomes higher the time required for the next damage gain decreases."
+    "description": "Gradually increases damage dealt in 10% increments. As the merging rank becomes higher the time required for the next damage gain decreases.",
+    "talents": null
   },
   {
     "name": "Sharpshooter",
     "icon": "PawnSharpShooter_icon",
     "rarity": 1,
     "faction": 3,
-    "description": "Deals additional damage to bosses and minibosses. During the boss waves, Crazy Shooting is triggered increasing damage and attack rate."
+    "description": "Deals additional damage to bosses and minibosses. During the boss waves, Crazy Shooting is triggered increasing damage and attack rate.",
+    "talents": null
   },
   {
     "name": "Zealot",
     "icon": "PawnZealot_icon",
     "rarity": 1,
     "faction": 2,
-    "description": "Increases his damage according to the amount of unused mana."
+    "description": "Increases his damage according to the amount of unused mana.",
+    "talents": null
   },
   {
     "name": "Catapult",
     "icon": "PawnCatapult_icon",
     "rarity": 2,
     "faction": 2,
-    "description": "Hurls a projectile that stuns enemies in the area."
+    "description": "Hurls a projectile that stuns enemies in the area.",
+    "talents": null
   },
   {
     "name": "Crystalmancer",
     "icon": "PawnCrystalmancer_icon",
     "rarity": 2,
     "faction": 4,
-    "description": "With each attack against the target, the damage dealt to it by every Crystalmancer increases. The damage increase is individual for each target."
+    "description": "With each attack against the target, the damage dealt to it by every Crystalmancer increases. The damage increase is individual for each target.",
+    "talents": null
   },
   {
     "name": "Engineer",
     "icon": "PawnEngineer_icon",
     "rarity": 2,
     "faction": 3,
-    "description": "Damage increased for every Engineer connected to this one."
+    "description": "Damage increased for every Engineer connected to this one.",
+    "talents": null
   },
   {
     "name": "Gargoyle",
     "icon": "PawnGargoyle_icon",
     "rarity": 2,
     "faction": 2,
-    "description": "The Gargoyle attacks enemies at odd merge ranges. At even merge ranks, it falls asleep giving adjacent Gargoyles an area attack. The Gargoyle is also invulnerable to negative effects at event merge ranks, and when it appears on the field, adjacent Gargoyles have a chance to be shielded from one negative effect."
+    "description": "The Gargoyle attacks enemies at odd merge ranges. At even merge ranks, it falls asleep giving adjacent Gargoyles an area attack. The Gargoyle is also invulnerable to negative effects at event merge ranks, and when it appears on the field, adjacent Gargoyles have a chance to be shielded from one negative effect.",
+    "talents": null
   },
   {
     "name": "Executioner",
     "icon": "PawnHeadsman_icon",
     "rarity": 2,
     "faction": 4,
-    "description": "Finishes off a monster below a certain amount of health. Less effective against bosses."
+    "description": "Finishes off a monster below a certain amount of health. Less effective against bosses.",
+    "talents": null
   },
   {
     "name": "Mime",
     "icon": "PawnPierrot_icon",
     "rarity": 2,
     "faction": 4,
-    "description": "Can be merged with any other unit of the same merging rank."
+    "description": "Can be merged with any other unit of the same merging rank.",
+    "talents": null
   },
   {
     "name": "Plague Doctor",
     "icon": "PawnPlagueDoctor_icon",
     "rarity": 2,
     "faction": 3,
-    "description": "Infects enemies. After dying, they leave behind a cloud that damages anyone who passes through it. The trap's damage increases with each merge rank."
+    "description": "Infects enemies. After dying, they leave behind a cloud that damages anyone who passes through it. The trap\u0027s damage increases with each merge rank.",
+    "talents": null
   },
   {
     "name": "Ivy",
     "icon": "PawnPoisonIvy_icon",
     "rarity": 2,
     "faction": 0,
-    "description": "Throws seeds that periodically deal damage. This damage increases with each noxious flower on a monster. When an enemy dies, its flower explodes, poisoning adjacent monsters and dealing damage based on the max number of noxious flowers on the monster."
+    "description": "Throws seeds that periodically deal damage. This damage increases with each noxious flower on a monster. When an enemy dies, its flower explodes, poisoning adjacent monsters and dealing damage based on the max number of noxious flowers on the monster.",
+    "talents": null
   },
   {
     "name": "Portal Keeper",
     "icon": "PawnPortalKeeper_icon",
     "rarity": 2,
     "faction": 1,
-    "description": "Swaps positions with any unit of the same merge rank, then becomes temporarily inactive. Both units receive a temporary shield that dispels all negative effects."
+    "description": "Swaps positions with any unit of the same merge rank, then becomes temporarily inactive. Both units receive a temporary shield that dispels all negative effects.",
+    "talents": null
   },
   {
     "name": "Pyrotechnic",
     "icon": "PawnPyrotechnic_icon",
     "rarity": 2,
     "faction": 3,
-    "description": "With an odd number, attack speed is reduced, he attacks a random target, and deals area damage. With an even number, damage is reduced, and he attacks the first target."
+    "description": "With an odd number, attack speed is reduced, he attacks a random target, and deals area damage. With an even number, damage is reduced, and he attacks the first target.",
+    "talents": null
   },
   {
     "name": "Reaper",
     "icon": "PawnReaper_icon",
     "rarity": 2,
     "faction": 4,
-    "description": "Has a chance to instantly kill the target on hit. Does not work on bosses."
+    "description": "Has a chance to instantly kill the target on hit. Does not work on bosses.",
+    "talents": null
   },
   {
     "name": "Portal Mage",
     "icon": "PawnTeleport_icon",
     "rarity": 2,
     "faction": 1,
-    "description": "Has a chance to teleport an enemy to the beginning of the map. Chance of next teleport is decreased."
+    "description": "Has a chance to teleport an enemy to the beginning of the map. Chance of next teleport is decreased.",
+    "talents": null
   },
   {
     "name": "Thunderer",
     "icon": "PawnThundercaller_icon",
     "rarity": 2,
     "faction": 1,
-    "description": "Hits an extra target with chain lightning for each merge rank. The lightning dazes enemies for a certain period."
+    "description": "Hits an extra target with chain lightning for each merge rank. The lightning dazes enemies for a certain period.",
+    "talents": null
   },
   {
     "name": "Vampire",
     "icon": "PawnMageVampire_icon",
     "rarity": 2,
     "faction": 4,
-    "description": "Bites the target, making it periodically give you mana."
+    "description": "Bites the target, making it periodically give you mana.",
+    "talents": null
   },
   {
     "name": "Wind Archer",
     "icon": "PawnWindArcher_icon",
     "rarity": 2,
     "faction": 0,
-    "description": "Goes into hurricane mode every few seconds, significantly increasing own attack speed."
+    "description": "Goes into hurricane mode every few seconds, significantly increasing own attack speed.",
+    "talents": null
   },
   {
     "name": "Bruiser",
     "icon": "PawnBerserk_icon",
     "rarity": 3,
     "faction": 1,
-    "description": "Has a chance to become enraged, receiving significant bonuses when 7 or more monsters are on the battlefield. Must reset before becoming enraged again. Is always enrage when fighting bosses. In PvE mode, does not require a certain number of monsters to become enraged."
+    "description": "Has a chance to become enraged, receiving significant bonuses when 7 or more monsters are on the battlefield. Must reset before becoming enraged again. Is always enrage when fighting bosses. In PvE mode, does not require a certain number of monsters to become enraged.",
+    "talents": null
   },
   {
     "name": "Blade Dancer",
     "icon": "PawnBladeDancer_icon",
     "rarity": 3,
     "faction": 0,
-    "description": "Without any Dancers nearby, enters enhanced mode, gaining an attack speed bonus. Increases damage dealt for each Dancer on the battlefield."
+    "description": "Without any Dancers nearby, enters enhanced mode, gaining an attack speed bonus. Increases damage dealt for each Dancer on the battlefield.",
+    "talents": null
   },
   {
     "name": "Boreas",
     "icon": "PawnBoreas_icon",
     "rarity": 3,
     "faction": 0,
-    "description": "Periodically changes firing phase. In the first phase increases attack speed. In the second phase, increases attack speed and critical hit chance."
+    "description": "Periodically changes firing phase. In the first phase increases attack speed. In the second phase, increases attack speed and critical hit chance.",
+    "talents": null
   },
   {
     "name": "Corsair",
     "icon": "PawnCorsair_icon",
     "rarity": 3,
     "faction": 3,
-    "description": "The Corsair leaves explosive traps on the battlefield. Has a chance to through a nasty bomb, dealing a certain percentage of the target's current health in damage."
+    "description": "The Corsair leaves explosive traps on the battlefield. Has a chance to through a nasty bomb, dealing a certain percentage of the target\u0027s current health in damage.",
+    "talents": null
   },
   {
     "name": "Cultist",
     "icon": "PawnCultist_icon",
     "rarity": 3,
     "faction": 4,
-    "description": "With 1-3 adjacent Cultists, gets an attack against additional targets. With 4 adjacent Cultists, empowers himself and his neighbors while also getting area attack."
+    "description": "With 1-3 adjacent Cultists, gets an attack against additional targets. With 4 adjacent Cultists, empowers himself and his neighbors while also getting area attack.",
+    "talents": null
   },
   {
     "name": "Demon Hunter",
     "icon": "PawnDemonHunter_icon",
     "rarity": 3,
     "faction": 1,
-    "description": "Attacks the first several targets in the amount equal to the merge rank. Demon Hunters with the highest merge rank deal increased damage."
+    "description": "Attacks the first several targets in the amount equal to the merge rank. Demon Hunters with the highest merge rank deal increased damage.",
+    "talents": null
   },
   {
     "name": "Demonologist",
     "icon": "PawnDemonologist_icon",
     "rarity": 3,
     "faction": 4,
-    "description": "Summons a monster to the opponent's side when merging. Killing the monster gives mana to the summoner. In Co-Op mode, summons monsters to both players' fields, killing the monster gives double the mana amount."
+    "description": "Summons a monster to the opponent\u0027s side when merging. Killing the monster gives mana to the summoner. In Co-Op mode, summons monsters to both players\u0027 fields, killing the monster gives double the mana amount.",
+    "talents": null
   },
   {
     "name": "Dryad",
     "icon": "PawnDryad_icon",
     "rarity": 3,
     "faction": 0,
-    "description": "Increases the merging rank of the unit it merges with."
+    "description": "Increases the merging rank of the unit it merges with.",
+    "talents": null
   },
   {
     "name": "Frost",
     "icon": "PawnFrostbite_icon",
     "rarity": 3,
     "faction": 4,
-    "description": "Throws a blizzard at opponents every several seconds that slows them all at once. The slowing power increases with merge rank."
+    "description": "Throws a blizzard at opponents every several seconds that slows them all at once. The slowing power increases with merge rank.",
+    "talents": null
   },
   {
     "name": "Harlequin",
     "icon": "PawnHarlequin_icon",
     "rarity": 3,
     "faction": 4,
-    "description": "When merged, creates a copy of any unit with the same merge rank. The damage dealt by the copy is reduced."
+    "description": "When merged, creates a copy of any unit with the same merge rank. The damage dealt by the copy is reduced.",
+    "talents": null
   },
   {
     "name": "Inquisitor",
     "icon": "PawnInquisitor_icon",
     "rarity": 3,
     "faction": 2,
-    "description": "Increases damage against the target with each attack. When you have 1, 4, 7 or 10 Inquisitors, they activate an extra ability that increases attack speed and allows dealing splash damage."
+    "description": "Increases damage against the target with each attack. When you have 1, 4, 7 or 10 Inquisitors, they activate an extra ability that increases attack speed and allows dealing splash damage.",
+    "talents": null
   },
   {
     "name": "Hex",
     "icon": "PawnJinx_icon",
     "rarity": 3,
     "faction": 4,
-    "description": "Gives an instant kill chance to four neighboring units. The chance increases with a greater unit merge rank."
+    "description": "Gives an instant kill chance to four neighboring units. The chance increases with a greater unit merge rank.",
+    "talents": null
   },
   {
     "name": "Knight Statue",
     "icon": "PawnKnightStatue_icon",
     "rarity": 3,
     "faction": 2,
-    "description": "Increases the attack speed of neighboring units. If an even number of Knight Statues is on the field, activates an ability that additionally increases attack speed and critical damage chance in proportion to merge rank."
+    "description": "Increases the attack speed of neighboring units. If an even number of Knight Statues is on the field, activates an ability that additionally increases attack speed and critical damage chance in proportion to merge rank.",
+    "talents": null
   },
   {
     "name": "Clock of Power",
     "icon": "PawnMasterDial_icon",
     "rarity": 3,
     "faction": 2,
-    "description": "Lowers (in PvP) or increases (in PvE) the attack speed of the other player's units. After merging, significantly reduces (in PvP) or increases (in PvE) the attack speed of the other player's units for 8 seconds."
+    "description": "Lowers (in PvP) or increases (in PvE) the attack speed of the other player\u0027s units. After merging, significantly reduces (in PvP) or increases (in PvE) the attack speed of the other player\u0027s units for 8 seconds.",
+    "talents": null
   },
   {
     "name": "Meteor",
     "icon": "PawnMeteor_icon",
     "rarity": 3,
     "faction": 1,
-    "description": "When merged, drops a meteorite down on enemies. The explosion can deal critical damage. The damage from the explosion and critical chance increase in proportion to the user's merge rank. Deals double damage to bosses and mini bosses."
+    "description": "When merged, drops a meteorite down on enemies. The explosion can deal critical damage. The damage from the explosion and critical chance increase in proportion to the user\u0027s merge rank. Deals double damage to bosses and mini bosses.",
+    "talents": null
   },
   {
     "name": "Minotaur",
     "icon": "PawnMinotaur_icon",
     "rarity": 3,
     "faction": 2,
-    "description": "Periodically causes Earthquakes that slow down and damage monsters in the area. When merging, causes a Rockfall that additionally slows down all monsters and inflicts damage depending on their health loss."
+    "description": "Periodically causes Earthquakes that slow down and damage monsters in the area. When merging, causes a Rockfall that additionally slows down all monsters and inflicts damage depending on their health loss.",
+    "talents": null
   },
   {
     "name": "Scrapper",
     "icon": "PawnScrapper_icon",
     "rarity": 3,
     "faction": 3,
-    "description": "Absorbs allied units to increase the merge rank of other units."
+    "description": "Absorbs allied units to increase the merge rank of other units.",
+    "talents": null
   },
   {
     "name": "Stasis",
     "icon": "PawnStasis_icon",
     "rarity": 3,
     "faction": 1,
-    "description": "Creates time control spheres that stop enemies in place."
+    "description": "Creates time control spheres that stop enemies in place.",
+    "talents": null
   },
   {
     "name": "Summoner",
     "icon": "PawnSummoner_icon",
     "rarity": 3,
     "faction": 0,
-    "description": "When merged, summons a random unit to a free tile. The unit's rank is random, from 1 to the Summoner's merge rank."
+    "description": "When merged, summons a random unit to a free tile. The unit\u0027s rank is random, from 1 to the Summoner\u0027s merge rank.",
+    "talents": null
   },
   {
     "name": "Tesla",
     "icon": "PawnTesla_icon",
     "rarity": 3,
     "faction": 3,
-    "description": "Receives charges when units in adjacent tiles are merged or increase rank. Damage is increased with every charge. Receives a chain attack when maximum charge is reached."
+    "description": "Receives charges when units in adjacent tiles are merged or increase rank. Damage is increased with every charge. Receives a chain attack when maximum charge is reached.",
+    "talents": null
   },
   {
     "name": "Trapper",
     "icon": "PawnTrapper_icon",
     "rarity": 3,
     "faction": 0,
-    "description": "Periodically throws a net at a random point. The net slows down monsters and increases the damage they take."
+    "description": "Periodically throws a net at a random point. The net slows down monsters and increases the damage they take.",
+    "talents": null
   },
   {
     "name": "Witch",
     "icon": "PawnWitch_icon",
     "rarity": 3,
     "faction": 1,
-    "description": "When merging, the With curses and opponent's unit in PvP and enchants an ally's unit in Co-Op. The cursed unit heals monsters with its attacks, and the enchanted unit increases its damage."
+    "description": "When merging, the With curses and opponent\u0027s unit in PvP and enchants an ally\u0027s unit in Co-Op. The cursed unit heals monsters with its attacks, and the enchanted unit increases its damage.",
+    "talents": null
   },
   {
     "name": "Shaman",
     "icon": "PawnWitchDoctor_icon",
     "rarity": 3,
     "faction": 4,
-    "description": "When merged, lowers the merging rank of a random enemy unit by one. In cooperative mode, however, it increases the merging rank of a random allied unit instead."
+    "description": "When merged, lowers the merging rank of a random enemy unit by one. In cooperative mode, however, it increases the merging rank of a random allied unit instead.",
+    "talents": null
   },
   {
     "name": "Robot",
     "icon": "PawnRobot_icon",
     "rarity": 3,
     "faction": 3,
-    "description": "Gets new abilities, depending on the number of merges the unit has been part of. New abilities are unlocked at 1, 5, 10, 15 and 20 merges."
+    "description": "Gets new abilities, depending on the number of merges the unit has been part of. New abilities are unlocked at 1, 5, 10, 15 and 20 merges.",
+    "talents": null
   }
 ]

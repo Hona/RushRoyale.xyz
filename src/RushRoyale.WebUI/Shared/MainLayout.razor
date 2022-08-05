@@ -1,19 +1,21 @@
 ﻿@inherits LayoutComponentBase
 
 @inject NavigationManager NavigationManager
+@inject ToolsService ToolsService
 
+@using Microsoft.AspNetCore.Components
 @implements IDisposable
 
 <MudLayout>
     <MudAppBar Elevation="1">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => NavMenuToggle())" />
         <MudText Typo="Typo.h5" Class="ml-3">
             <div @onclick='() => NavigationManager.NavigateTo("/")'>RushRoyale.xyz</div>
         </MudText>
         <MudSpacer />
-        <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
+        <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" OnClick="e => DrawerToggle()" />
     </MudAppBar>
-    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
+    <MudDrawer @bind-Open="_navMenuOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
         <NavMenu />
     </MudDrawer>
     <MudMainContent>
@@ -39,12 +41,19 @@
     </MudMainContent>
 </MudLayout>
 
+<MudDrawer @bind-Open="@_drawerOpen" Anchor="@Anchor.End" Elevation="1" Variant="@DrawerVariant.Temporary">
+    <MudDrawerHeader>
+        <MudText Typo="Typo.h6">Tools</MudText>
+    </MudDrawerHeader>
+    <MudSwitch @bind-Checked="ToolsService.DeveloperOverride" Label="Developer Mode" Color="Color.Primary" Style="margin: 0; padding: 0"/>
+</MudDrawer>
+
 <MudThemeProvider IsDarkMode/>
 <MudDialogProvider/>
 <MudSnackbarProvider/>
 
 @code {
-    bool _drawerOpen = true;
+    bool _navMenuOpen = true;
 
     private ErrorBoundary _errorBoundary = null!;
 
@@ -53,9 +62,10 @@
         NavigationManager.LocationChanged += RecoverFromError;
     }
 
-    void DrawerToggle()
+
+    void NavMenuToggle()
     {
-        _drawerOpen = !_drawerOpen;
+        _navMenuOpen = !_navMenuOpen;
     }
 
     private void RecoverFromError(object? sender, LocationChangedEventArgs e)
@@ -63,6 +73,12 @@
         _errorBoundary.Recover();
     }
 
+    private bool _drawerOpen;
+    private void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+    
     public void Dispose()
     {
         NavigationManager.LocationChanged -= RecoverFromError;

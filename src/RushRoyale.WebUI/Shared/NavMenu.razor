@@ -1,5 +1,8 @@
 ﻿@using Microsoft.Extensions.Options
-@inject IOptions<Developer> Developer
+@using System.Net
+@inject ToolsService ToolsService
+
+@implements IDisposable
 
 <MudNavMenu Class="mud-width-full pt-4">
     <MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Icons.Filled.Dashboard">Dashboard</MudNavLink>
@@ -17,10 +20,24 @@
             <MudNavLink Href="/wiki/ladders/hero-tavern">Hero Tavern</MudNavLink>
         </MudNavGroup>
     </MudNavGroup>
-    @if (Developer.Value.Enabled)
+    @if (ToolsService.IsDeveloper)
     {
         <MudNavGroup Title="Developer" Icon="@Icons.Filled.Code" Expanded>
             <MudNavLink Href="/developer/data-editor">Data Editor</MudNavLink>
         </MudNavGroup>
     }
 </MudNavMenu>
+
+@code {
+    protected override void OnInitialized()
+    {
+        ToolsService.OnToolsUpdated += HandleToolsUpdated;
+    }
+    
+    void HandleToolsUpdated(object? sender, EventArgs e) => StateHasChanged();
+
+    public void Dispose()
+    {
+        ToolsService.OnToolsUpdated -= HandleToolsUpdated;
+    }
+}

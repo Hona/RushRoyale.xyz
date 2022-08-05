@@ -145,7 +145,49 @@
     "rarity": 0,
     "faction": 0,
     "description": "Damage per strike increases by a random number between 1 and your critical damage value.",
-    "talents": null
+    "talents": {
+      "9": [
+        {
+          "name": "Smoke Bomb",
+          "description": "Has a 50% chance of the Rogue using a smoke bomb. When merging or changing merge rank for 5 sec. neighboring Rogues are shrouded in smoke, protecting them from negative effects.",
+          "icon": "Icon_PawnRogue_Talents_1a"
+        },
+        {
+          "name": "Vigor Bomb",
+          "description": "Has a 50% chance of the Rogue using an vigor bomb. When merging or changing merge rank for 5 sec. neighboring Rogues are shrouded in smoke, increasing their attack speed by 30%",
+          "icon": "Icon_PawnRogue_Talents_1b"
+        }
+      ],
+      "11": [
+        {
+          "name": "Giant Spikes",
+          "description": "Has 50% chance of the Rogue using spikes. When merging or changing merge rank, throws them at the first target. The spikes inflict damage and slow monsters down. Bosses and mini bosses within the range of the spikes receive 50% more damage.",
+          "icon": "Icon_PawnRogue_Talents_2a"
+        },
+        {
+          "name": "Slug Spikes",
+          "description": "Has 50% chance of the Rogue using spikes. When merging or changing merge rank, throws them at the first target. The spikes inflict damage and slow monsters down. All monsters, except bosses and mini bosses within the range of the spikes receive 30% more damage.",
+          "icon": "Icon_PawnRogue_Talents_2b"
+        }
+      ],
+      "13": [
+        {
+          "name": "Fan Strike",
+          "description": "While in the smoke, the Rogue attacks the first 3 target(s).",
+          "icon": "Icon_PawnRogue_Talents_3a"
+        },
+        {
+          "name": "Double Blow",
+          "description": "While in the smoke, the Rogue attacks the target twice.",
+          "icon": "Icon_PawnRogue_Talents_3b"
+        }
+      ],
+      "15": {
+        "name": "Shinobi",
+        "description": "Has a 15% chance of a Shinobi appearing in place of the Rogue, using both a bomb and spikes. His spread of extra damage does not start at 1, but at 10% of your critical damage score. In addition, every 20 seconds it covers itself and neighboring Rogues in smoke and throws spikes at monsters.",
+        "icon": "Icon_PawnRogue_Talents_4"
+      }
+    }
   },
   {
     "name": "Thrower",

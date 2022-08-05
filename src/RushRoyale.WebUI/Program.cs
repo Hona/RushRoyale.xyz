@@ -20,6 +20,7 @@ builder.Services.AddHttpClient<DataService>(x =>
 builder.Services.Configure<Developer>(builder.Configuration.GetSection(nameof(Developer)));
 
 builder.Services.AddSingleton<DataServiceCache>();
+builder.Services.AddSingleton<ToolsService>();
 
 var apiBaseUrl = builder.Configuration["Api:BaseUrl"];
 builder.Services.AddHttpClient<AuthenticationClient>(x =>

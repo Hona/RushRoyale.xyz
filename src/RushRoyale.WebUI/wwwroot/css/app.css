@@ -228,3 +228,7 @@
     max-height: 90vh;
     overflow-y: scroll;
 }
+
+body {
+    overflow-x: hidden;
+}

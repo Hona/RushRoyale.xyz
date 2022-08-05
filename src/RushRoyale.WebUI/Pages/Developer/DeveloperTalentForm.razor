@@ -1,7 +1,7 @@
 ﻿<MudForm Model="Value">
-    <MudTextField @bind-Value="Value.Name" Label="@nameof(Value.Name)" />
-    <MudTextField @bind-Value="Value.IconUrl" Label="@nameof(Value.Name)" />
-    <MudTextField @bind-Value="Value.Description" Label="@nameof(Value.Name)" />
+    <MudTextField @bind-Value="Value.Name" Label="@nameof(Value.Name)" Variant="Variant.Outlined" Margin="Margin.Dense"/>
+    <MudTextField @bind-Value="Value.IconUrl" Label="@nameof(Value.IconUrl)" Variant="Variant.Outlined" Margin="Margin.Dense"/>
+    <MudTextField @bind-Value="Value.Description" Label="@nameof(Value.Description)" Variant="Variant.Outlined" Margin="Margin.Dense" Lines="4" />
 </MudForm>
 
 @code {

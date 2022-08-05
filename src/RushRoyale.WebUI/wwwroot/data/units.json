@@ -24,43 +24,43 @@
     "talents": {
       "9": [
         {
-          "Name": "Deep Freeze",
-          "Description": "Every 15 attacks, the Cold Mage freezes monsters for 4s. This effect activates once.",
+          "name": "Deep Freeze",
+          "description": "Every 15 attacks, the Cold Mage freezes monsters for 4s. This effect activates once.",
           "icon": "Icon_PawnMageCold_Talents_1a"
         },
         {
-          "Name": "Fierce Cold",
-          "Description": "Slows the target by an additional 5% on top of the max amount.",
+          "name": "Fierce Cold",
+          "description": "Slows the target by an additional 5% on top of the max amount.",
           "icon": "Icon_PawnMageCold_Talents_1b"
         }
       ],
       "11": [
         {
-          "Name": "Heat Leak",
-          "Description": "When the Cold mage merges, a random unit on the opponent\u0027s field freezes for 6s. Duration increases with the merge rank. Does not work in Co-Op and Clan Tournament Attack.",
+          "name": "Heat Leak",
+          "description": "When the Cold mage merges, a random unit on the opponent\u0027s field freezes for 6s. Duration increases with the merge rank. Does not work in Co-Op and Clan Tournament Attack.",
           "icon": "Icon_PawnMageCold_Talents_2a"
         },
         {
-          "Name": "Flash of Frost",
-          "Description": "When the Cold Mage merges, 3 monsters on the path are slowed by the max amount. The number of monsters increases based on the Cold Mage\u0027s merge rank.",
+          "name": "Flash of Frost",
+          "description": "When the Cold Mage merges, 3 monsters on the path are slowed by the max amount. The number of monsters increases based on the Cold Mage\u0027s merge rank.",
           "icon": "Icon_PawnMageCold_Talents_2b"
         }
       ],
       "13": [
         {
-          "Name": "Blizzard",
-          "Description": "Has a 7% chance on attack to affect the taret with a blizzard, slowing monsters in the area.",
+          "name": "Blizzard",
+          "description": "Has a 7% chance on attack to affect the taret with a blizzard, slowing monsters in the area.",
           "icon": "Icon_PawnMageCold_Talents_3a"
         },
         {
-          "Name": "Cracking Ice",
-          "Description": "Frozen targets with health below 30% take 20% more damage.",
+          "name": "Cracking Ice",
+          "description": "Frozen targets with health below 30% take 20% more damage.",
           "icon": "Icon_PawnMageCold_Talents_3b"
         }
       ],
       "15": {
-        "Name": "Deadly Cold",
-        "Description": "Frozen targets die if their health drops below 5%.",
+        "name": "Deadly Cold",
+        "description": "Frozen targets die if their health drops below 5%.",
         "icon": "Icon_PawnMageCold_Talents_4"
       }
     }
@@ -79,7 +79,49 @@
     "rarity": 0,
     "faction": 0,
     "description": "The first shot at a target deals increased damage. Damage also grows with merge rank.",
-    "talents": null
+    "talents": {
+      "9": [
+        {
+          "name": "Poaching",
+          "description": "Moves to the next target every 15 shots.",
+          "icon": "Icon_PawnHunter_Talents_1a"
+        },
+        {
+          "name": "Sudden Shot",
+          "description": "Has 50% chance to also deal 150% more damage with the first shot.",
+          "icon": "Icon_PawnHunter_Talents_1b"
+        }
+      ],
+      "11": [
+        {
+          "name": "Hunting Season",
+          "description": "Killing a boss or mini boss with the Hunter\u0027s attack gives a trophy. When you have 6 trophies, 2 Hunters go up in merge rank, and your trophies reset to zero.",
+          "icon": "Icon_PawnHunter_Talents_2a"
+        },
+        {
+          "name": "Large Prey",
+          "description": "Killing a boss or mini boss with the Hunter\u0027s attack gives a trophy. Increasing that unit\u0027s damage by 15. The maximum number of trophies cannot exceed 60.",
+          "icon": "Icon_PawnHunter_Talents_2b"
+        }
+      ],
+      "13": [
+        {
+          "name": "Buckshot",
+          "description": "Hunters at merge rank 3 or higher deal 30% damage in a small radius around the target.",
+          "icon": "Icon_PawnHunter_Talents_3a"
+        },
+        {
+          "name": "Keen Eye",
+          "description": "Hunters at merge rank 3 or higher get an additional 12%  critical damage chance.",
+          "icon": "Icon_PawnHunter_Talents_3b"
+        }
+      ],
+      "15": {
+        "name": "Wild Hunt",
+        "description": "Has a 30% chance to increase the number of trophies. Killing a boss or mini boss summons a swift boar to your opponent\u0027s field. Killing an enemy with the Hunter also has a 8% chance to summon a boar. Does not work in Co-Op or Clan Tournament Attack.",
+        "icon": "Icon_PawnHunter_Talents_4"
+      }
+    }
   },
   {
     "name": "Lightning Mage",

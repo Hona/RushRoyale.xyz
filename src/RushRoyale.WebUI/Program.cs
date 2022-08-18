@@ -28,4 +28,11 @@ builder.Services.AddHttpClient<AuthenticationClient>(x =>
     x.BaseAddress = new Uri(apiBaseUrl ?? throw new InvalidOperationException());
 });
 builder.Services.AddHttpClient();
+
+builder.Services.AddOidcAuthentication(options =>
+{
+    builder.Configuration.Bind("Auth0", options.ProviderOptions);
+    options.ProviderOptions.ResponseType = "code";
+});
+
 await builder.Build().RunAsync();

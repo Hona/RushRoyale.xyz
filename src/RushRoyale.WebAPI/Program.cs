@@ -1,42 +1,17 @@
-using System.Text;
-using AspNet.Security.OAuth.Discord;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authorization;
 using RushRoyale.Application.Features.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddDiscord(options =>
     {
         options.ClientId = builder.Configuration["Discord:ClientId"];
         options.ClientSecret = builder.Configuration["Discord:ClientSecret"];
-        options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-    }).AddCookie()
-    .AddJwtBearer(options =>
-    {
-        options.Authority = builder.Configuration["Jwt:Authority"];
-        options.Audience = builder.Configuration["Jwt:Audience"];
-        options.SaveToken = true;
-        
-        var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]);
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(key),
-            ValidateIssuer = true,
-            ValidIssuer = builder.Configuration["Jwt:Issuer"],
-            ValidateAudience = true,
-            ValidAudience = builder.Configuration["Jwt:Audience"],
-            ValidateLifetime = true,
-            ClockSkew = TimeSpan.Zero
-        };
-    });
-
-
+    }).AddCookie();
 
 builder.Services.AddSwaggerDocument();
 
@@ -74,6 +49,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapGet("/ping", () => "Pong!");
+app.MapGet("/ping", [Authorize] () => "Pong!");
 
 app.Run();

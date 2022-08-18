@@ -2,6 +2,7 @@ using System.Security.Claims;
 using AspNet.Security.OAuth.Discord;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using RushRoyale.Application.Features.Identity;
@@ -26,7 +27,7 @@ public class AuthenticationController : ControllerBase
 
     [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
     [HttpGet("login")]
-    public IActionResult Login([FromQuery] string returnUrl = "/")
+    public IActionResult Login([FromQuery] string? returnUrl)
     {
         var httpContext = _httpContextAccessor.HttpContext;
         var identity = httpContext?.User.Identity;
@@ -34,14 +35,27 @@ public class AuthenticationController : ControllerBase
         // Check if user is authenticated
         if (identity is { IsAuthenticated: true })
         {
-            var token = _jwtService.GenerateToken(httpContext.User);
-            return Ok(token);
+            return Redirect(returnUrl ?? "/");
         }
         
         // Challenge user to login with Discord
-        return Challenge(new AuthenticationProperties
+        return Challenge(DiscordAuthenticationDefaults.AuthenticationScheme);
+    }
+    
+    [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [HttpGet("me")]
+    public IActionResult Me()
+    {
+        var httpContext = _httpContextAccessor.HttpContext;
+        var identity = httpContext?.User.Identity;
+        
+        // Check if user is authenticated
+        if (identity is { IsAuthenticated: true })
         {
-            
-        }, DiscordAuthenticationDefaults.AuthenticationScheme);
+            return Ok(identity.Name);
+        }
+        
+        return Unauthorized();
     }
 }

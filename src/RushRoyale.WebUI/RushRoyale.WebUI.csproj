@@ -26,4 +26,8 @@
       <ProjectReference Include="..\RushRoyale.WebApiClient\RushRoyale.WebApiClient.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+        <TrimmerRootAssembly Include="Microsoft.Authentication.WebAssembly.Msal" />
+    </ItemGroup>
+
 </Project>

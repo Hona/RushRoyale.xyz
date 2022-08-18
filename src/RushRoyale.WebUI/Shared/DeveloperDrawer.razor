@@ -1,0 +1,18 @@
+﻿@inject ToolsService ToolsService
+
+<MudDrawer Open="Open" OpenChanged="OpenChanged" Anchor="@Anchor.End" Elevation="1" Variant="@DrawerVariant.Temporary">
+    <MudDrawerHeader>
+        <MudText Typo="Typo.h6">Tools</MudText>
+    </MudDrawerHeader>
+    <MudSwitch @bind-Checked="ToolsService.DeveloperOverride" Label="Developer Mode" Color="Color.Primary" Style="margin: 0; padding: 0"/>
+    <MudButton>API - Me</MudButton>
+</MudDrawer>
+
+@code {
+    [Parameter]
+    public bool Open { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> OpenChanged { get; set; }
+}
+

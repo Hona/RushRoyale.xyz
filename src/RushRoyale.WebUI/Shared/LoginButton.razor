@@ -1,0 +1,15 @@
+﻿@using System.Web
+@inject NavigationManager NavigationManager
+@inject IConfiguration Configuration
+
+<MudButton OnClick="Callback">
+    Login
+</MudButton>
+
+@code {
+    private void Callback()
+    {
+        NavigationManager.NavigateTo(
+            $"authentication/login?returnUrl={Uri.EscapeDataString(NavigationManager.Uri)}");
+    }
+}

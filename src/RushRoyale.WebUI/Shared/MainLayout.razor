@@ -4,6 +4,7 @@
 @inject ToolsService ToolsService
 
 @using Microsoft.AspNetCore.Components
+@using System.Security.Claims
 @implements IDisposable
 
 <MudLayout>
@@ -13,6 +14,14 @@
             <div @onclick='() => NavigationManager.NavigateTo("/")'>RushRoyale.xyz</div>
         </MudText>
         <MudSpacer />
+        <AuthorizeView>
+            <Authorized>
+                Hello, <MudImage Src="@context.User.FindFirst("picture").Value" Class="ma-2" Style="outline:var(--mud-palette-appbar-text) 1px solid;max-height: 65%;width: auto;border-radius:50%"/> @context.User.Identity.Name!
+            </Authorized>
+            <NotAuthorized>
+                <LoginButton />
+            </NotAuthorized>
+        </AuthorizeView>
         <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" OnClick="e => DrawerToggle()" />
     </MudAppBar>
     <MudDrawer @bind-Open="_navMenuOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
@@ -41,12 +50,7 @@
     </MudMainContent>
 </MudLayout>
 
-<MudDrawer @bind-Open="@_drawerOpen" Anchor="@Anchor.End" Elevation="1" Variant="@DrawerVariant.Temporary">
-    <MudDrawerHeader>
-        <MudText Typo="Typo.h6">Tools</MudText>
-    </MudDrawerHeader>
-    <MudSwitch @bind-Checked="ToolsService.DeveloperOverride" Label="Developer Mode" Color="Color.Primary" Style="margin: 0; padding: 0"/>
-</MudDrawer>
+<DeveloperDrawer @bind-Open="_drawerOpen"/>
 
 <MudThemeProvider IsDarkMode/>
 <MudDialogProvider/>

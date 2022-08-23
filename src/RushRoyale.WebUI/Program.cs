@@ -21,6 +21,8 @@ builder.Services.Configure<Developer>(builder.Configuration.GetSection(nameof(De
 
 builder.Services.AddSingleton<DataServiceCache>();
 builder.Services.AddSingleton<ToolsService>();
+builder.Services.AddSingleton<NewsService>();
+
 
 var apiBaseUrl = builder.Configuration["Api:BaseUrl"];
 builder.Services.AddHttpClient<AuthenticationClient>(x =>

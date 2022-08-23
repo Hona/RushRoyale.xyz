@@ -1,0 +1,47 @@
+﻿@page "/news"
+@using RushRoyale.WebUI.Services.News.Models
+
+@inject NewsService NewsService
+
+@if (_articles is null)
+{
+    <MudProgressLinear Indeterminate />
+}
+else
+{
+    @foreach (var article in _articles.OrderByDescending(x => x.Time))
+    {
+        <MudCard Class="my-4">
+            <MudCardHeader>
+                @article.Content.English.Title
+            </MudCardHeader>
+            <MudCardContent>
+                @(new MarkupString(article.ContentHTML.English.Body))
+            </MudCardContent>
+        </MudCard>
+    }
+}
+
+@code {
+    private List<NewsArticle>? _articles;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        var index = await NewsService.GetNewsIndexAsync();
+        
+        ArgumentNullException.ThrowIfNull(index);
+
+        _articles = new List<NewsArticle>();
+        
+        foreach (var article in index.News)
+        {
+            var articleContent = await NewsService.GetNewsArticleAsync(article);
+            
+            if (articleContent != null)
+            {
+                _articles.Add(articleContent);
+                StateHasChanged();
+            }
+        }
+    }
+}

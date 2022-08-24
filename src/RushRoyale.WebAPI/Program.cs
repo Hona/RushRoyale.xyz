@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using RushRoyale.Application.Features.Identity;
+using RushRoyale.Application.Features.News;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,7 @@ builder.Services.AddSwaggerDocument();
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddSingleton<IJwtService, JwtService>();
+builder.Services.AddSingleton<NewsService>();
 
 var app = builder.Build();
 

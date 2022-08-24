@@ -1,5 +1,6 @@
 [
   {
+    "id": "pawn_archer",
     "name": "Archer",
     "icon": "PawnArcher_icon",
     "rarity": 0,
@@ -8,6 +9,7 @@
     "talents": null
   },
   {
+    "id": "pawn_bombardier",
     "name": "Bombardier",
     "icon": "PawnBombardier_icon",
     "rarity": 0,
@@ -16,6 +18,7 @@
     "talents": null
   },
   {
+    "id": "pawn_coldmage",
     "name": "Cold Mage",
     "icon": "PawnMageCold_icon",
     "rarity": 0,
@@ -66,6 +69,7 @@
     }
   },
   {
+    "id": "pawn_firemage",
     "name": "Fire Mage",
     "icon": "PawnMageFire_icon",
     "rarity": 0,
@@ -74,6 +78,7 @@
     "talents": null
   },
   {
+    "id": "pawn_hunter",
     "name": "Hunter",
     "icon": "PawnHunter_icon",
     "rarity": 0,
@@ -124,6 +129,7 @@
     }
   },
   {
+    "id": "pawn_lightningmage",
     "name": "Lightning Mage",
     "icon": "PawnMageLightning_icon",
     "rarity": 0,
@@ -132,6 +138,7 @@
     "talents": null
   },
   {
+    "id": "pawn_poisondart",
     "name": "Poisoner",
     "icon": "PawnPoisonDart_icon",
     "rarity": 0,
@@ -140,6 +147,7 @@
     "talents": null
   },
   {
+    "id": "pawn_rogue",
     "name": "Rogue",
     "icon": "PawnRogue_icon",
     "rarity": 0,
@@ -190,6 +198,7 @@
     }
   },
   {
+    "id": "pawn_slinger",
     "name": "Thrower",
     "icon": "PawnSlinger_icon",
     "rarity": 0,
@@ -198,6 +207,7 @@
     "talents": null
   },
   {
+    "id": "pawn_alchemist",
     "name": "Alchemist",
     "icon": "PawnAlchemist_icon",
     "rarity": 1,
@@ -206,6 +216,7 @@
     "talents": null
   },
   {
+    "id": "pawn_banner",
     "name": "Banner",
     "icon": "PawnBanner_icon",
     "rarity": 1,
@@ -214,6 +225,7 @@
     "talents": null
   },
   {
+    "id": "pawn_cauldron",
     "name": "Magic Cauldron",
     "icon": "PawnCauldron_icon",
     "rarity": 1,
@@ -222,6 +234,7 @@
     "talents": null
   },
   {
+    "id": "pawn_corrosionchemist",
     "name": "Chemist",
     "icon": "PawnCorrosionChemist_icon",
     "rarity": 1,
@@ -230,6 +243,7 @@
     "talents": null
   },
   {
+    "id": "pawn_grindstone",
     "name": "Grindstone",
     "icon": "PawnGrindstone_icon",
     "rarity": 1,
@@ -238,6 +252,7 @@
     "talents": null
   },
   {
+    "id": "pawn_priestess",
     "name": "Priestess",
     "icon": "PawnPriestess_icon",
     "rarity": 1,
@@ -246,6 +261,7 @@
     "talents": null
   },
   {
+    "id": "pawn_sentry",
     "name": "Sentry",
     "icon": "PawnSentry_icon",
     "rarity": 1,
@@ -254,6 +270,7 @@
     "talents": null
   },
   {
+    "id": "pawn_sharpshooter",
     "name": "Sharpshooter",
     "icon": "PawnSharpShooter_icon",
     "rarity": 1,
@@ -262,6 +279,7 @@
     "talents": null
   },
   {
+    "id": "pawn_zealot",
     "name": "Zealot",
     "icon": "PawnZealot_icon",
     "rarity": 1,
@@ -270,6 +288,7 @@
     "talents": null
   },
   {
+    "id": "pawn_catapult",
     "name": "Catapult",
     "icon": "PawnCatapult_icon",
     "rarity": 2,
@@ -278,6 +297,7 @@
     "talents": null
   },
   {
+    "id": "pawn_crystalmancer",
     "name": "Crystalmancer",
     "icon": "PawnCrystalmancer_icon",
     "rarity": 2,
@@ -286,6 +306,7 @@
     "talents": null
   },
   {
+    "id": "pawn_engineer",
     "name": "Engineer",
     "icon": "PawnEngineer_icon",
     "rarity": 2,
@@ -294,6 +315,7 @@
     "talents": null
   },
   {
+    "id": "pawn_gargoyle",
     "name": "Gargoyle",
     "icon": "PawnGargoyle_icon",
     "rarity": 2,
@@ -302,6 +324,7 @@
     "talents": null
   },
   {
+    "id": "pawn_headsman",
     "name": "Executioner",
     "icon": "PawnHeadsman_icon",
     "rarity": 2,
@@ -310,6 +333,7 @@
     "talents": null
   },
   {
+    "id": "pawn_pierrot",
     "name": "Mime",
     "icon": "PawnPierrot_icon",
     "rarity": 2,
@@ -318,6 +342,7 @@
     "talents": null
   },
   {
+    "id": "pawn_plaguedoctor",
     "name": "Plague Doctor",
     "icon": "PawnPlagueDoctor_icon",
     "rarity": 2,
@@ -326,6 +351,7 @@
     "talents": null
   },
   {
+    "id": "pawn_poisonivy",
     "name": "Ivy",
     "icon": "PawnPoisonIvy_icon",
     "rarity": 2,
@@ -334,6 +360,7 @@
     "talents": null
   },
   {
+    "id": "pawn_portalkeeper",
     "name": "Portal Keeper",
     "icon": "PawnPortalKeeper_icon",
     "rarity": 2,
@@ -342,6 +369,7 @@
     "talents": null
   },
   {
+    "id": "pawn_pyrotechnic",
     "name": "Pyrotechnic",
     "icon": "PawnPyrotechnic_icon",
     "rarity": 2,
@@ -350,6 +378,7 @@
     "talents": null
   },
   {
+    "id": "pawn_reaper",
     "name": "Reaper",
     "icon": "PawnReaper_icon",
     "rarity": 2,
@@ -358,6 +387,7 @@
     "talents": null
   },
   {
+    "id": "pawn_teleport",
     "name": "Portal Mage",
     "icon": "PawnTeleport_icon",
     "rarity": 2,
@@ -366,6 +396,7 @@
     "talents": null
   },
   {
+    "id": "pawn_thundercaller",
     "name": "Thunderer",
     "icon": "PawnThundercaller_icon",
     "rarity": 2,
@@ -374,6 +405,7 @@
     "talents": null
   },
   {
+    "id": "pawn_vampire",
     "name": "Vampire",
     "icon": "PawnMageVampire_icon",
     "rarity": 2,
@@ -382,6 +414,7 @@
     "talents": null
   },
   {
+    "id": "pawn_windarcher",
     "name": "Wind Archer",
     "icon": "PawnWindArcher_icon",
     "rarity": 2,
@@ -390,6 +423,7 @@
     "talents": null
   },
   {
+    "id": "pawn_berserk",
     "name": "Bruiser",
     "icon": "PawnBerserk_icon",
     "rarity": 3,
@@ -398,6 +432,7 @@
     "talents": null
   },
   {
+    "id": "pawn_BladeDancer",
     "name": "Blade Dancer",
     "icon": "PawnBladeDancer_icon",
     "rarity": 3,
@@ -406,6 +441,7 @@
     "talents": null
   },
   {
+    "id": "pawn_boreas",
     "name": "Boreas",
     "icon": "PawnBoreas_icon",
     "rarity": 3,
@@ -414,6 +450,7 @@
     "talents": null
   },
   {
+    "id": "pawn_corsair",
     "name": "Corsair",
     "icon": "PawnCorsair_icon",
     "rarity": 3,
@@ -422,6 +459,7 @@
     "talents": null
   },
   {
+    "id": "pawn_cultist",
     "name": "Cultist",
     "icon": "PawnCultist_icon",
     "rarity": 3,
@@ -430,6 +468,7 @@
     "talents": null
   },
   {
+    "id": "pawn_demonhunter",
     "name": "Demon Hunter",
     "icon": "PawnDemonHunter_icon",
     "rarity": 3,
@@ -438,6 +477,7 @@
     "talents": null
   },
   {
+    "id": "pawn_demonologist",
     "name": "Demonologist",
     "icon": "PawnDemonologist_icon",
     "rarity": 3,
@@ -446,6 +486,7 @@
     "talents": null
   },
   {
+    "id": "pawn_dryad",
     "name": "Dryad",
     "icon": "PawnDryad_icon",
     "rarity": 3,
@@ -454,6 +495,7 @@
     "talents": null
   },
   {
+    "id": "pawn_frostbite",
     "name": "Frost",
     "icon": "PawnFrostbite_icon",
     "rarity": 3,
@@ -462,6 +504,7 @@
     "talents": null
   },
   {
+    "id": "pawn_harlequin",
     "name": "Harlequin",
     "icon": "PawnHarlequin_icon",
     "rarity": 3,
@@ -470,6 +513,7 @@
     "talents": null
   },
   {
+    "id": "pawn_inquisitor",
     "name": "Inquisitor",
     "icon": "PawnInquisitor_icon",
     "rarity": 3,
@@ -478,6 +522,7 @@
     "talents": null
   },
   {
+    "id": "pawn_jinx",
     "name": "Hex",
     "icon": "PawnJinx_icon",
     "rarity": 3,
@@ -486,6 +531,7 @@
     "talents": null
   },
   {
+    "id": "pawn_knightstatue",
     "name": "Knight Statue",
     "icon": "PawnKnightStatue_icon",
     "rarity": 3,
@@ -494,6 +540,7 @@
     "talents": null
   },
   {
+    "id": "pawn_masterdial",
     "name": "Clock of Power",
     "icon": "PawnMasterDial_icon",
     "rarity": 3,
@@ -502,6 +549,7 @@
     "talents": null
   },
   {
+    "id": "pawn_meteor",
     "name": "Meteor",
     "icon": "PawnMeteor_icon",
     "rarity": 3,
@@ -510,6 +558,7 @@
     "talents": null
   },
   {
+    "id": "pawn_minotaur",
     "name": "Minotaur",
     "icon": "PawnMinotaur_icon",
     "rarity": 3,
@@ -518,6 +567,7 @@
     "talents": null
   },
   {
+    "id": "pawn_scrapper",
     "name": "Scrapper",
     "icon": "PawnScrapper_icon",
     "rarity": 3,
@@ -526,6 +576,7 @@
     "talents": null
   },
   {
+    "id": "pawn_stasis",
     "name": "Stasis",
     "icon": "PawnStasis_icon",
     "rarity": 3,
@@ -534,6 +585,7 @@
     "talents": null
   },
   {
+    "id": "pawn_summoner",
     "name": "Summoner",
     "icon": "PawnSummoner_icon",
     "rarity": 3,
@@ -542,6 +594,7 @@
     "talents": null
   },
   {
+    "id": "pawn_tesla",
     "name": "Tesla",
     "icon": "PawnTesla_icon",
     "rarity": 3,
@@ -550,6 +603,7 @@
     "talents": null
   },
   {
+    "id": "pawn_trapper",
     "name": "Trapper",
     "icon": "PawnTrapper_icon",
     "rarity": 3,
@@ -558,6 +612,7 @@
     "talents": null
   },
   {
+    "id": "pawn_witch",
     "name": "Witch",
     "icon": "PawnWitch_icon",
     "rarity": 3,
@@ -566,6 +621,7 @@
     "talents": null
   },
   {
+    "id": "pawn_witchdoctor",
     "name": "Shaman",
     "icon": "PawnWitchDoctor_icon",
     "rarity": 3,
@@ -574,6 +630,7 @@
     "talents": null
   },
   {
+    "id": "pawn_robot",
     "name": "Robot",
     "icon": "PawnRobot_icon",
     "rarity": 3,

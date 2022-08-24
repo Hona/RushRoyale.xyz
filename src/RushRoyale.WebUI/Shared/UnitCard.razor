@@ -15,6 +15,9 @@
     
     [Parameter]
     public bool IsButton { get; set; }
+    
+    [Parameter]
+    public bool Disabled { get; set; }
 
     private int GetSize() => Size switch
     {
@@ -31,7 +34,7 @@
         Rarity.Epic => "unit-epic",
         Rarity.Legendary => "unit-legendary",
         _ => throw new ArgumentOutOfRangeException()
-    };
+    } + " " + (Disabled ? "unit-disabled" : "");
 
     protected override void OnParametersSet()
     {

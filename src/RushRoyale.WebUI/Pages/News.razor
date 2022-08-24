@@ -1,7 +1,6 @@
 ﻿@page "/news"
-@using RushRoyale.WebUI.Services.News.Models
 
-@inject NewsService NewsService
+@inject NewsClient NewsClient
 
 @if (_articles is null)
 {
@@ -9,33 +8,82 @@
 }
 else
 {
-    @foreach (var article in _articles.OrderByDescending(x => x.Time))
-    {
-        <MudCard Class="my-4">
-            <MudCardHeader>
-                @article.Content.English.Title
-            </MudCardHeader>
-            <MudCardContent>
-                @(new MarkupString(article.ContentHTML.English.Body))
-            </MudCardContent>
-        </MudCard>
-    }
+    <MudContainer MaxWidth="MaxWidth.Medium">
+        
+        <MudSwitch @bind-Checked="_showPreview">Preview</MudSwitch>
+
+        @foreach (var article in _articles
+            .Where(x => _showPreview 
+                ? x.Preview || x.Type is NewsType.ImportantInformationRussianOnly
+                : !x.Preview && x.Type is not NewsType.ImportantInformationRussianOnly)
+            .OrderByDescending(x => x.Time))
+        {
+            <MudCard Class="my-4 pa-4">
+                <MudCardMedia Image="@("https://static.rush.my.games/News/" + article.Banner)"></MudCardMedia>
+                <MudCardHeader>
+                    <MudText Typo="Typo.h4" Color="Color.Secondary" Align="Align.Center">
+                        @article.Content.English.Title
+                    </MudText>
+
+                    <MudSpacer/>
+
+                    <MudText Typo="Typo.subtitle1">@(article.Time is null ? null : DateTime.UnixEpoch.AddSeconds(article.Time ?? 0).Humanize())</MudText>
+
+                </MudCardHeader>
+                <MudCardContent>
+                    <div class="html-sanitize d-flex flex-column px-6">
+                        @(new MarkupString(article.ContentHTML.English.Body))
+                    </div>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButtonGroup Variant="Variant.Outlined" Color="Color.Primary">
+                        @if (!string.IsNullOrWhiteSpace(article.Discord))
+                        {
+                            <MudButton StartIcon="@Icons.Custom.Brands.Discord" Href="@(article.Discord)">Discord</MudButton>
+                        }
+
+                        @if (!string.IsNullOrWhiteSpace(article.Facebook))
+                        {
+                            <MudButton StartIcon="@Icons.Custom.Brands.Facebook" Href="@(article.Facebook)">Facebook</MudButton>
+                        }
+
+                        @if (!string.IsNullOrWhiteSpace(article.Vk))
+                        {
+                            <MudButton Href="@(article.Vk)">VK</MudButton>
+                        }
+                 </MudButtonGroup>
+                </MudCardActions>
+            </MudCard>
+        }
+
+        @if (_loading)
+        {
+            <MudProgressCircular Indeterminate />
+        }
+        
+    </MudContainer>
 }
 
 @code {
     private List<NewsArticle>? _articles;
+
+    private bool _showPreview;
+
+    private bool _loading;
     
     protected override async Task OnInitializedAsync()
     {
-        var index = await NewsService.GetNewsIndexAsync();
-        
+        var index = await NewsClient.GetIndexAsync();
+
         ArgumentNullException.ThrowIfNull(index);
 
         _articles = new List<NewsArticle>();
+
+        _loading = true;
         
-        foreach (var article in index.News)
+        foreach (var article in index.News.OrderByDescending(x => x))
         {
-            var articleContent = await NewsService.GetNewsArticleAsync(article);
+            var articleContent = await NewsClient.GetArticleAsync(article);
             
             if (articleContent != null)
             {
@@ -43,5 +91,7 @@ else
                 StateHasChanged();
             }
         }
+
+        _loading = false;
     }
 }

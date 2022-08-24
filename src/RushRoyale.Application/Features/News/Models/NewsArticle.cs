@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace RushRoyale.WebUI.Services.News.Models;
+namespace RushRoyale.Application.Features.News.Models;
 
     public class ChineseSimplified
     {
@@ -164,7 +164,7 @@ namespace RushRoyale.WebUI.Services.News.Models;
     public class NewsArticle
     {
         [JsonPropertyName("type")]
-        public int Type { get; set; }
+        public NewsType Type { get; set; }
 
         [JsonPropertyName("time")]
         public int? Time { get; set; }
@@ -193,6 +193,13 @@ namespace RushRoyale.WebUI.Services.News.Models;
         [JsonPropertyName("content")]
         public Content Content { get; set; }
     }
+
+public enum NewsType
+{
+    VersionUpdate = 0,
+    ImportantInformationRussianOnly = 1,
+    NewSeason = 2
+}
 
     public class Russian
     {

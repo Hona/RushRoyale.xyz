@@ -4,6 +4,8 @@ using MudBlazor.Services;
 using RushRoyale.WebApiClient;
 using RushRoyale.WebUI;
 using RushRoyale.WebUI.Models;
+using RushRoyale.WebUI.Models.DataMine;
+using RushRoyale.WebUI.Pages.DataMine;
 using RushRoyale.WebUI.Services;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -21,14 +23,16 @@ builder.Services.Configure<Developer>(builder.Configuration.GetSection(nameof(De
 
 builder.Services.AddSingleton<DataServiceCache>();
 builder.Services.AddSingleton<ToolsService>();
-builder.Services.AddSingleton<NewsService>();
-
+builder.Services.AddSingleton<LocalizationService>();
 
 var apiBaseUrl = builder.Configuration["Api:BaseUrl"];
-builder.Services.AddHttpClient<AuthenticationClient>(x =>
-{
-    x.BaseAddress = new Uri(apiBaseUrl ?? throw new InvalidOperationException());
-});
+
+const string ApiClient = nameof(ApiClient);
+builder.Services.AddHttpClient(ApiClient, 
+    client => client.BaseAddress = new Uri(apiBaseUrl ?? throw new InvalidOperationException()));
+
+builder.Services.AddHttpClient<NewsClient>(ApiClient);
+
 builder.Services.AddHttpClient();
 
 builder.Services.AddOidcAuthentication(options =>

@@ -232,3 +232,32 @@
 body {
     overflow-x: hidden;
 }
+
+.html-sanitize * {
+    all: unset;
+}
+
+.html-sanitize font {
+    color: var(--mud-palette-tertiary);
+}
+
+.html-sanitize div > font {
+    font-size: 1.125rem;
+} 
+
+.html-sanitize ul {
+    list-style-type: disc;
+}
+
+.html-sanitize ol {
+    list-style-type: decimal;
+}
+
+.html-sanitize li {
+    display: list-item;
+    list-style-position: inside;
+}
+
+.unit-disabled {
+    filter: grayscale(100%);
+}

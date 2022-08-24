@@ -4,6 +4,7 @@ namespace RushRoyale.WebUI.Models;
 
 public class Unit
 {
+    [JsonPropertyName("id")] public string Id { get; set; } = null!;
     [JsonPropertyName("name")] public string Name { get; set; } = null!;
     [JsonPropertyName("icon")] public string IconUrl { get; set; } = null!;
     [JsonPropertyName("rarity")] public Rarity Rarity { get; set; }

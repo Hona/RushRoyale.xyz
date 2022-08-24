@@ -1,0 +1,37 @@
+﻿@page "/data-mine/localization"
+@using RushRoyale.WebUI.Models.DataMine
+
+@inject DataService DataService
+
+@if (_loading)
+{
+    <MudProgressLinear Indeterminate />
+}
+else
+{
+    <MudTable Items="_localizations">
+        <HeaderContent>
+            <MudTh>Key</MudTh>
+            <MudTh>Value</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Key">@context.Key</MudTd>
+            <MudTd DataLabel="Value">@context.Value</MudTd>
+        </RowTemplate>
+    </MudTable>
+}
+
+@code {
+    private LocalizationDictionary _localizations;
+
+    private bool _loading;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _loading = true;
+        
+        _localizations = await DataService.GetLocalizationsAsync() ?? throw new InvalidOperationException();
+        
+        _loading = false;
+    }
+}

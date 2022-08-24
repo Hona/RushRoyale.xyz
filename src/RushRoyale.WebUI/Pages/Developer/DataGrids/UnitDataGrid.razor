@@ -1,6 +1,7 @@
 ﻿<MudDataGrid ReadOnly="false" T="Unit" Items="Items" EditMode="DataGridEditMode.Form" EditTrigger="DataGridEditTrigger.OnRowClick" Hover Dense StartedEditingItem="HandleStartedEditingItem">
     <Columns>
-        <Column T="Unit" Field="@nameof(Unit.Name)" IsEditable/>
+            <Column T="Unit" Field="@nameof(Unit.Id)" IsEditable/>
+            <Column T="Unit" Field="@nameof(Unit.Name)" IsEditable/>
         <Column T="Unit" Field="@nameof(Unit.IconUrl)" IsEditable/>
         <Column T="Unit" Field="@nameof(Unit.Rarity)" IsEditable>
             <EditTemplate>

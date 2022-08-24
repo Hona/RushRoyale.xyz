@@ -2,9 +2,9 @@
 
 public class DataServiceCache
 {
-    public Dictionary<Type, IReadOnlyList<object>?> MemoryCache { get; } = new();
+    public Dictionary<Type, object?> MemoryCache { get; } = new();
     
-    public IReadOnlyList<T>? GetFromCache<T>() => MemoryCache[typeof(T)] as IReadOnlyList<T>;
+    public T? GetFromCache<T>() where T : class => MemoryCache[typeof(T)] as T;
 
     public bool IsInCache<T>() => MemoryCache.ContainsKey(typeof(T));
 }

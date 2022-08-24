@@ -7,6 +7,9 @@
 <MudNavMenu Class="mud-width-full pt-4">
     <MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Icons.Filled.Dashboard">Dashboard</MudNavLink>
     <MudNavLink Href="/news" Match="NavLinkMatch.All" Icon="@Icons.Filled.Newspaper">News</MudNavLink>
+    <MudNavGroup Title="Player Tools" Icon="@Icons.Filled.Person" Expanded>
+        <MudNavLink Href="/player-tools/my-profile">My Profile</MudNavLink>
+    </MudNavGroup>
     <MudNavGroup Title="Wiki" Icon="@Icons.Filled.MenuBook" Expanded>
         <MudNavLink Href="/wiki/units" Icon="@Icons.Filled.PersonPinCircle">Units</MudNavLink>
         <MudNavLink Href="/wiki/heroes" Icon="@Icons.Filled.EmojiPeople">Heroes</MudNavLink>
@@ -20,6 +23,9 @@
             <MudNavLink Href="/wiki/ladders/season">Season</MudNavLink>
             <MudNavLink Href="/wiki/ladders/hero-tavern">Hero Tavern</MudNavLink>
         </MudNavGroup>
+    </MudNavGroup>
+    <MudNavGroup Title="Data Mine" Icon="@Icons.Filled.Handyman" Expanded>
+        <MudNavLink Href="/data-mine/localization">Localization</MudNavLink>
     </MudNavGroup>
     @if (ToolsService.IsDeveloper)
     {

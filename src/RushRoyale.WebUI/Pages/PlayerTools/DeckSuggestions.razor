@@ -1,0 +1,56 @@
+﻿@page "/player-tools/deck-suggestions"
+@attribute [Authorize]
+
+@inject ProfileClient ProfileClient
+@inject DataService DataService
+
+<MudAlert Severity="Severity.Warning" Variant="Variant.Filled">
+    This is a work-in-progress page and probably uses random data.
+</MudAlert>
+
+@if (_loading)
+{
+    <MudProgressLinear Indeterminate />
+}
+else
+{
+    <div class="d-flex gap-4 flex-wrap justify-center">
+        @foreach (var suggestion in _suggestions)
+        {
+            <DeckOverview Units="suggestion" Class="my-2 gap-2"/>
+        }
+    </div>
+}
+
+@code {
+    private bool _loading;
+
+    private PlayerProfile _profile;
+    
+    private List<List<Unit>> _suggestions;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        _loading = true;
+
+        _profile = await ProfileClient.GetProfileAsync();
+        var units = await DataService.GetUnitsAsync();
+
+        var random = new Random();
+        _suggestions = new List<List<Unit>>();
+        for (int i = 0; i < 6; i++)
+        {
+            var newSuggestion = new List<Unit>();
+
+            for (var y = 0; y < 5; y++)
+            {
+                newSuggestion.Add(units[random.Next(0, units.Count)]);
+            }
+            
+            _suggestions.Add(newSuggestion);
+        }
+
+        _loading = false;
+    }
+
+}

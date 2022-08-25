@@ -1,0 +1,16 @@
+﻿<MudCard Class="@GetClass()" >
+    @foreach (var unit in Units)
+    {
+        <UnitCard Value="unit"/>
+    }
+</MudCard>
+
+@code {
+    [Parameter]
+    public List<Unit> Units { get; set; }
+
+    [Parameter]
+    public string Class { get; set; }
+
+    private string GetClass() => "d-inline-flex pa-4 " + Class;
+}

@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{53EC80AD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RushRoyale.DataMiner", "src\Tools\RushRoyale.DataMiner\RushRoyale.DataMiner.csproj", "{88FD3082-291D-4180-BC87-6067ACBA5E6F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RushRoyale.Infrastructure", "src\RushRoyale.Infrastructure\RushRoyale.Infrastructure.csproj", "{819DA2A0-0672-479F-B6F6-9DCC2FE095E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,7 @@ Global
 		{E703F646-189E-4456-B344-4AE51F83D7C1} = {C08B29DB-2911-4AEF-A798-5B2B9C1D3BDA}
 		{53EC80AD-7881-40E9-886E-135164430DF9} = {C08B29DB-2911-4AEF-A798-5B2B9C1D3BDA}
 		{88FD3082-291D-4180-BC87-6067ACBA5E6F} = {53EC80AD-7881-40E9-886E-135164430DF9}
+		{819DA2A0-0672-479F-B6F6-9DCC2FE095E7} = {C08B29DB-2911-4AEF-A798-5B2B9C1D3BDA}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{1081750C-A1D6-4F73-974F-A31E831BEFA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -54,5 +57,9 @@ Global
 		{88FD3082-291D-4180-BC87-6067ACBA5E6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88FD3082-291D-4180-BC87-6067ACBA5E6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88FD3082-291D-4180-BC87-6067ACBA5E6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{819DA2A0-0672-479F-B6F6-9DCC2FE095E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{819DA2A0-0672-479F-B6F6-9DCC2FE095E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{819DA2A0-0672-479F-B6F6-9DCC2FE095E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{819DA2A0-0672-479F-B6F6-9DCC2FE095E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

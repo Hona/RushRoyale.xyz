@@ -3,7 +3,17 @@
 @inject NavigationManager NavigationManager
 
 <div class="@GetClass()" @onclick="HandleClick">
-    <MudImage Src="@("assets/Sprite/" + Value.IconUrl + ".png")"></MudImage>
+    @if (Level is null or 0)
+    {
+        @Image
+    }
+    else
+    {
+        <MudBadge Overlap Content="@(Level)" Color="Color.Secondary">
+            @Image
+        </MudBadge>
+    }
+
 </div>
 @code {
 
@@ -18,6 +28,13 @@
     
     [Parameter]
     public bool Disabled { get; set; }
+    
+    [Parameter]
+    public int? Level { get; set; }
+
+    private RenderFragment Image =>
+        @<MudImage Src="@("assets/Sprite/" + Value.IconUrl + ".png")"/>;
+
 
     private int GetSize() => Size switch
     {

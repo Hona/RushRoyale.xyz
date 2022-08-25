@@ -2,21 +2,24 @@
 @using Size = MudBlazor.Size
 
 @inject DataService DataService
+@inject ProfileClient ProfileClient
 
-@if (_units is null)
+@if (_loading)
 {
     <MudProgressLinear Indeterminate />
 }
 else
 {
-    @foreach (var playerUnit in _playerUnits)
+    <MudButton Color="Color.Primary" Variant="Variant.Filled" Class="ma-2" Size="Size.Large" OnClick="HandleSaveAsync">Save</MudButton>
+
+    @foreach (var playerUnit in _profile.Units)
     {
-        <MudCard Class="d-flex align-center pa-4">
+        <MudCard Class="d-flex align-center pa-4 my-2">
             <div class="px-4">
-                <UnitCard Disabled="!playerUnit.Unlocked" Size="Shared.Size.Large" Value="_units.First(x => x.Id == playerUnit.UnitId)"/>
+                <UnitCard Disabled="@(playerUnit.UnitLevel == 0)" Size="Shared.Size.Medium" Value="_units.First(x => x.Id == playerUnit.UnitId)" Level="playerUnit.UnitLevel"/>
             </div>
             <MudSlider @bind-Value="playerUnit.UnitLevel" Class="px-6" T="int" Min="0" Max="15" Size="Size.Large" TickMarks ValueLabel>
-                @if (playerUnit.Unlocked)
+                @if (playerUnit.UnitLevel != 0)
                 {
                     <span>
                         Level: @playerUnit.UnitLevel
@@ -29,31 +32,50 @@ else
             </MudSlider>
         </MudCard>
     }
-    
-    <MudButton Color="Color.Primary" Variant="Variant.Filled" Class="ma-2" Size="Size.Large">Save</MudButton>
 }
 
 
 @code {
+    private bool _loading;
+    
     private IReadOnlyList<Unit>? _units;
 
-    private IReadOnlyList<PlayerUnit> _playerUnits = null!;
+    private PlayerProfile _profile = null!;
 
     protected override async Task OnInitializedAsync()
     {
+        _loading = true;
+        
         _units = await DataService.GetUnitsAsync() ?? throw new InvalidOperationException();
 
-        _playerUnits = _units.Select(x => new PlayerUnit()
-        {
-            UnitId = x.Id,
-            UnitLevel = 0
-        }).ToList();
+        await LoadProfileAsync();
+
+        _loading = false;
     }
 
-    private class PlayerUnit
+    private async Task LoadProfileAsync()
     {
-        public string UnitId { get; set; }
-        public int UnitLevel { get; set; }
-        public bool Unlocked => UnitLevel is not 0;
+        _profile = await ProfileClient.GetProfileAsync();
+        
+        if (!_profile.Units.Any())
+        {
+            _profile.Units = _units.Select(x => new PlayerUnit()
+            {
+                UnitId = x.Id,
+                UnitLevel = 0
+            }).ToList();
+        }
     }
+
+    private async Task HandleSaveAsync()
+    {
+        _loading = true;
+        
+        await ProfileClient.CreateOrUpdateProfileAsync(_profile);
+
+        await LoadProfileAsync();
+        
+        _loading = false;
+    }
+
 }

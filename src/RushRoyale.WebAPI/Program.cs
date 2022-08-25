@@ -1,32 +1,36 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
-using RushRoyale.Application.Features.Identity;
-using RushRoyale.Application.Features.News;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using RushRoyale.Application;
+using RushRoyale.Infrastructure;
+using RushRoyale.WebAPI;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddDiscord(options =>
+builder.Services.AddAuthentication(options =>
     {
-        options.ClientId = builder.Configuration["Discord:ClientId"];
-        options.ClientSecret = builder.Configuration["Discord:ClientSecret"];
-    }).AddCookie();
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, c =>
+    {
+        c.Authority = builder.Configuration["Auth0:Authority"];
+        c.Audience = builder.Configuration["Auth0:Audience"];
+    });
 
 builder.Services.AddSwaggerDocument();
 
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddSingleton<IJwtService, JwtService>();
-builder.Services.AddSingleton<NewsService>();
+builder.Services.AddScoped<CurrentUserService>();
+
+builder.Services.AddApplication();
+builder.Services.AddInfrastructure(builder.Configuration.GetConnectionString("Cosmos"));
 
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    Console.WriteLine("Allowing cors");
-    
     // Allow different port in development locally. Deployed url has the same origin
     app.UseCors(x => x
         .WithOrigins("https://localhost:7005", "https://localhost:7028")
@@ -50,7 +54,5 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
-app.MapGet("/ping", [Authorize] () => "Pong!");
 
 app.Run();

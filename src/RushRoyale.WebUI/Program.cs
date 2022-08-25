@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MudBlazor.Services;
 using RushRoyale.WebApiClient;
@@ -29,9 +30,15 @@ var apiBaseUrl = builder.Configuration["Api:BaseUrl"];
 
 const string ApiClient = nameof(ApiClient);
 builder.Services.AddHttpClient(ApiClient, 
-    client => client.BaseAddress = new Uri(apiBaseUrl ?? throw new InvalidOperationException()));
+    client => client.BaseAddress = new Uri(apiBaseUrl ?? throw new InvalidOperationException()))
+    .AddHttpMessageHandler(sp =>
+        sp.GetRequiredService<AuthorizationMessageHandler>()
+            .ConfigureHandler(
+                authorizedUrls: new[] { apiBaseUrl }
+            ));
 
 builder.Services.AddHttpClient<NewsClient>(ApiClient);
+builder.Services.AddHttpClient<ProfileClient>(ApiClient);
 
 builder.Services.AddHttpClient();
 
@@ -39,6 +46,9 @@ builder.Services.AddOidcAuthentication(options =>
 {
     builder.Configuration.Bind("Auth0", options.ProviderOptions);
     options.ProviderOptions.ResponseType = "code";
+    
+    // API audience
+    options.ProviderOptions.AdditionalProviderParameters.Add("audience", builder.Configuration["Auth0:Audience"]);
 });
 
 await builder.Build().RunAsync();

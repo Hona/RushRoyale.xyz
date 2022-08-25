@@ -14,6 +14,9 @@
             <div @onclick='() => NavigationManager.NavigateTo("/")'>RushRoyale.xyz</div>
         </MudText>
         <MudSpacer />
+        <MudButton Variant="Variant.Outlined" EndIcon="@Icons.Custom.Brands.Discord" Href="https://discord.gg/BQTgAnqjpw" Class="mr-4">
+            Community
+        </MudButton>
         <AuthorizeView>
             <Authorized>
                 Hello, <MudImage Src="@context.User.FindFirst("picture").Value" Class="ma-2" Style="outline:var(--mud-palette-appbar-text) 1px solid;max-height: 65%;width: auto;border-radius:50%"/> @context.User.Identity.Name!

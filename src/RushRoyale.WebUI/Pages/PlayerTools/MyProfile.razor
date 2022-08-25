@@ -17,7 +17,7 @@ else
     {
         <MudCard Class="d-flex align-center pa-4 my-2">
             <div class="px-4">
-                <UnitCard Disabled="@(playerUnit.UnitLevel == 0)" Size="Shared.Size.Medium" Value="_units.First(x => x.Id == playerUnit.UnitId)" Level="playerUnit.UnitLevel"/>
+                <UnitCard Size="Shared.Size.Medium" Value="_units.First(x => x.Id == playerUnit.UnitId)" PlayerUnit="playerUnit"/>
             </div>
             <MudSlider @bind-Value="playerUnit.UnitLevel" Class="px-6" T="int" Min="0" Max="15" Size="Size.Large" TickMarks ValueLabel>
                 @if (playerUnit.UnitLevel != 0)

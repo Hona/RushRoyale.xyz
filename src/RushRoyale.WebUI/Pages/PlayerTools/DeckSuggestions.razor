@@ -4,7 +4,7 @@
 @inject ProfileClient ProfileClient
 @inject DataService DataService
 
-<MudAlert Severity="Severity.Warning" Variant="Variant.Filled">
+<MudAlert Severity="Severity.Warning" Variant="Variant.Filled" Class="mb-4">
     This is a work-in-progress page and probably uses random data.
 </MudAlert>
 
@@ -14,15 +14,37 @@
 }
 else
 {
+    var unlockedSuggestions = _suggestions
+        .Where(units => units.All(
+            x => _profile.Units
+                .Any(playerUnit => playerUnit.UnitId == x.Id && playerUnit.UnitLevel > 0)))
+        .ToList();
+    <MudText Typo="Typo.h4">Ready to Go!</MudText>
     <div class="d-flex gap-4 flex-wrap justify-center">
-        @foreach (var suggestion in _suggestions)
+        @foreach (var suggestion in unlockedSuggestions)
         {
-            <DeckOverview Units="suggestion" Class="my-2 gap-2"/>
+            <DeckOverview Units="suggestion" PlayerUnits="suggestion.Select(x => _profile.Units.First(playerUnit => playerUnit.UnitId == x.Id)).ToList()" Class="my-2 gap-2"/>
+        }
+    </div>
+    <MudText Typo="Typo.h4">Work Towards</MudText>
+    <div class="d-flex gap-4 flex-wrap justify-center">
+        @foreach (var suggestion in _suggestions.Except(unlockedSuggestions))
+        {
+            <DeckOverview Units="suggestion" PlayerUnits="suggestion.Select(x => _profile.Units.First(playerUnit => playerUnit.UnitId == x.Id)).ToList()" Class="my-2 gap-2"/>
         }
     </div>
 }
 
 @code {
+
+    private static readonly List<List<string>> _deckSuggestionsBeta = new()
+    {
+        new List<string>() { "pawn_crystalmancer", "pawn_poisonivy", "pawn_bombardier", "pawn_coldmage", "pawn_catapult"},
+        new List<string>() { "pawn_engineer", "pawn_thundercaller", "pawn_priestess", "pawn_pierrot", "pawn_bombardier"},
+        new List<string>() { "pawn_cultist", "pawn_portalkeeper", "pawn_dryad", "pawn_harlequin", "pawn_corrosionchemist"},
+
+    };
+    
     private bool _loading;
 
     private PlayerProfile _profile;
@@ -36,7 +58,11 @@ else
         _profile = await ProfileClient.GetProfileAsync();
         var units = await DataService.GetUnitsAsync();
 
-        var random = new Random();
+        ArgumentNullException.ThrowIfNull(units);
+        
+        _suggestions = _deckSuggestionsBeta.Select(deckUnitStrings 
+            => deckUnitStrings.Select(x => units.First(u => u.Id == x)).ToList()).ToList();
+        /*var random = new Random();
         _suggestions = new List<List<Unit>>();
         for (int i = 0; i < 6; i++)
         {
@@ -48,7 +74,7 @@ else
             }
             
             _suggestions.Add(newSuggestion);
-        }
+        }*/
 
         _loading = false;
     }

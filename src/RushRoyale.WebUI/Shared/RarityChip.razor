@@ -3,16 +3,16 @@
 @switch (Value)
 {
     case Rarity.Common:
-        <MudChip Color="Color.Dark">Common</MudChip>
+        <MudChip Color="Color.Default" Value="Value">Common</MudChip>
         break;
     case Rarity.Rare:
-        <MudChip Color="Color.Info">Rare</MudChip>
+        <MudChip Color="Color.Info" Value="Value">Rare</MudChip>
         break;
     case Rarity.Epic:
-        <MudChip Color="Color.Primary">Epic</MudChip>
+        <MudChip Color="Color.Primary" Value="Value">Epic</MudChip>
         break;
     case Rarity.Legendary:
-        <MudChip Color="Color.Warning">Legendary</MudChip>
+        <MudChip Color="Color.Warning" Value="Value">Legendary</MudChip>
         break;
     default:
         throw new ArgumentOutOfRangeException();

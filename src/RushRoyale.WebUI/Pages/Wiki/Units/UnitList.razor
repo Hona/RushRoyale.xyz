@@ -22,6 +22,14 @@ else
         }
     </div>
     
+    <MudChipSet Class="faction-filter" @bind-SelectedChips="_filteredRarities" MultiSelection Filter>
+        @foreach (var rarity in _rarities)
+        {
+            <RarityChip Value="rarity"/>
+        }
+    </MudChipSet>
+
+    
     <MudContainer MaxWidth="MaxWidth.Medium">
         <div class="unit-grid">
             @{
@@ -29,7 +37,16 @@ else
 
                 if (_selectedFaction is not null)
                 {
-                    filteredUnits = filteredUnits.Where(x => x.FactionType == _selectedFaction).ToList().AsReadOnly();
+                    filteredUnits = filteredUnits
+                        .Where(x => x.FactionType == _selectedFaction)
+                        .ToList().AsReadOnly();
+                }
+
+                if (_filteredRarities is not null && _filteredRarities.Any())
+                {
+                    filteredUnits = filteredUnits
+                        .Where(x => _filteredRarities.Any(chip => chip.Value is Rarity rarity && rarity == x.Rarity))
+                        .ToList().AsReadOnly();
                 }
             }
             @foreach (var unit in filteredUnits)
@@ -47,8 +64,11 @@ else
 
     private IReadOnlyList<Unit>? _units;
     private IReadOnlyList<Faction>? _factions;
+    private IReadOnlyList<Rarity> _rarities = Enum.GetValues<Rarity>();
 
-    private FactionType? _selectedFaction = null;
+    private MudChip[]? _filteredRarities;
+
+    private FactionType? _selectedFaction;
 
     protected override async Task OnInitializedAsync()
     {

@@ -1,7 +1,17 @@
 ﻿<CascadingAuthenticationState>
     <Router AppAssembly="@typeof(App).Assembly">
         <Found Context="routeData">
-            <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"/>
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+                <NotAuthorized>
+                    <MudContainer MaxWidth="MaxWidth.Medium">
+                        <MudAlert Severity="Severity.Warning" Variant="Variant.Filled">
+                            You must be logged in to view this page.
+                        </MudAlert>
+                        
+                        <MudButton Class="mt-2" Color="Color.Primary" Variant="Variant.Filled" Href="/authentication/login">Log In</MudButton>
+                    </MudContainer>
+                </NotAuthorized>
+            </AuthorizeRouteView>
             <FocusOnNavigate RouteData="@routeData" Selector="h1"/>
         </Found>
         <NotFound>

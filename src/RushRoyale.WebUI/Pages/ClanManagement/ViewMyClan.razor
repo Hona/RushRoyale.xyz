@@ -1,0 +1,30 @@
+﻿@page "/clan-management/my-clans/{Id}"
+@attribute [Authorize]
+
+@inject ClanClient ClanClient
+
+@if (_clan is null)
+{
+    <MudProgressLinear Indeterminate />
+}
+else
+{
+    <MudText Typo="Typo.h4">
+        @_clan.DisplayName
+    </MudText>
+}
+
+@code {
+    private RegisteredClan? _clan;
+
+    [Parameter]
+    public string Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var clans = await ClanClient.GetClansAsync();
+
+        _clan = clans.First(x => x.Id == Id);
+    }
+
+}

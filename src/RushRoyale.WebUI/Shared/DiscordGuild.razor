@@ -1,0 +1,13 @@
+﻿<div class="d-flex align-center" style="max-height: 100%">
+    <MudImage Style="border-radius: 50%;" Src="@Value.IconUrl" Width="@Height" Fluid />
+    <MudText Class="ml-4">
+        @Value.Name
+    </MudText>
+</div>
+@code {
+    [Parameter]
+    public UserGuild Value { get; set; }
+
+    [Parameter]
+    public int Height { get; set; }
+}

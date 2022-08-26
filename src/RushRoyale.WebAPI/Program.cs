@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using RushRoyale.Application;
+using RushRoyale.Discord;
 using RushRoyale.Infrastructure;
 using RushRoyale.WebAPI;
 
@@ -26,6 +27,7 @@ builder.Services.AddScoped<CurrentUserService>();
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration.GetConnectionString("Cosmos"));
+builder.Services.AddDiscord(builder.Configuration);
 
 var app = builder.Build();
 

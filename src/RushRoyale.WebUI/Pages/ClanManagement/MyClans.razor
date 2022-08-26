@@ -1,0 +1,38 @@
+﻿@page "/clan-management/my-clans"
+@attribute [Authorize]
+
+@inject ClanClient ClanClient
+
+@if (_clans is null)
+{
+    <MudProgressLinear Indeterminate />
+}
+else
+{
+    <div class="d-flex flex-wrap gap-4">
+        @foreach (var clan in _clans)
+        {
+            <MudCard>
+                <MudCardHeader>
+                    <MudText Typo="Typo.h6" Color="Color.Primary">
+                        @clan.DisplayName
+                    </MudText>
+                </MudCardHeader>
+                <MudCardActions>
+                    <MudSpacer />
+                    <MudButton Href="@("/clan-management/my-clans/" + clan.Id)">View</MudButton>
+                </MudCardActions>
+            </MudCard>
+        }
+    </div>
+}
+
+@code {
+    private IReadOnlyList<RegisteredClan>? _clans;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _clans = await ClanClient.GetClansAsync();
+    }
+
+}

@@ -19,7 +19,7 @@ public class GenericRepository
         var result = await _cosmosClient.CreateDatabaseIfNotExistsAsync(DbConstants.DatabaseName);
         
         var database = result.Database;
-        var response = await database.CreateContainerIfNotExistsAsync(typeof(T).FullName, "/" + (partitionKeyPath.Body as MemberExpression).Member.Name);
+        var response = await database.CreateContainerIfNotExistsAsync(typeof(T).FullName, "/" + ((partitionKeyPath.Body as MemberExpression)?.Member.Name ?? throw new InvalidCastException("Cannot cast partition key expression to MemberExpression")));
         return response.Container;
     }
     
@@ -39,6 +39,37 @@ public class GenericRepository
             return default;
         }
     }
+    
+    public async Task<IEnumerable<T>> GetItemListAsync<T>(string partitionKey, Expression<Func<T, string>> partitionKeyExpression) where T : ICosmosDocument
+    {
+        var container = await GetContainerAsync(partitionKeyExpression);
+
+        try
+        {
+            var output = new List<T>();
+
+            using var resultSet = container.GetItemQueryIterator<T>(
+                queryDefinition: null,
+                requestOptions: new QueryRequestOptions
+                {
+                    PartitionKey = new PartitionKey(partitionKey)
+                });
+            
+            while (resultSet.HasMoreResults)
+            {
+                var response = await resultSet.ReadNextAsync();
+                    
+                output.AddRange(response);
+            }
+
+            return output;
+        }
+        catch (CosmosException e) when (e.StatusCode == HttpStatusCode.NotFound)
+        {
+            return Enumerable.Empty<T>();
+        }
+    }
+
     
     public async Task CreateItemAsync<T>(T item, Expression<Func<T, string>> partitionKeyExpression) where T : ICosmosDocument
     {

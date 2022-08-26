@@ -12,6 +12,12 @@
 {
     <MudProgressLinear Indeterminate />
 }
+else if (!_profile.Units.Any())
+{
+    <MudAlert Severity="Severity.Warning">
+        You have not setup your profile yet. Please go to the <MudLink Href="/player-tools/my-profile">profile page</MudLink> to setup your profile.
+    </MudAlert>
+}
 else
 {
     var unlockedSuggestions = _suggestions
@@ -59,7 +65,7 @@ else
         var units = await DataService.GetUnitsAsync();
 
         ArgumentNullException.ThrowIfNull(units);
-        
+
         _suggestions = _deckSuggestionsBeta.Select(deckUnitStrings 
             => deckUnitStrings.Select(x => units.First(u => u.Id == x)).ToList()).ToList();
         /*var random = new Random();

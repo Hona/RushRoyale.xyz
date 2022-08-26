@@ -1,13 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-    </PropertyGroup>
+      <UserSecretsId>6b79de5f-31c0-478f-8deb-7c9ae5ebb839</UserSecretsId>
+  </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="AspNet.Security.OAuth.Discord" Version="6.0.6" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.7" />
         <PackageReference Include="NSwag.AspNetCore" Version="13.16.1" />
         <PackageReference Include="NSwag.MSBuild" Version="13.16.1">
@@ -19,6 +19,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\RushRoyale.Application\RushRoyale.Application.csproj" />
+      <ProjectReference Include="..\RushRoyale.Discord\RushRoyale.Discord.csproj" />
     </ItemGroup>
 
     <PropertyGroup>

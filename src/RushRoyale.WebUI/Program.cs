@@ -26,19 +26,7 @@ builder.Services.AddSingleton<DataServiceCache>();
 builder.Services.AddSingleton<ToolsService>();
 builder.Services.AddSingleton<LocalizationService>();
 
-var apiBaseUrl = builder.Configuration["Api:BaseUrl"];
-
-const string ApiClient = nameof(ApiClient);
-builder.Services.AddHttpClient(ApiClient, 
-    client => client.BaseAddress = new Uri(apiBaseUrl ?? throw new InvalidOperationException()))
-    .AddHttpMessageHandler(sp =>
-        sp.GetRequiredService<AuthorizationMessageHandler>()
-            .ConfigureHandler(
-                authorizedUrls: new[] { apiBaseUrl }
-            ));
-
-builder.Services.AddHttpClient<NewsClient>(ApiClient);
-builder.Services.AddHttpClient<ProfileClient>(ApiClient);
+builder.Services.AddApiClients(builder.Configuration["Api:BaseUrl"] ?? throw new InvalidOperationException());
 
 builder.Services.AddHttpClient();
 

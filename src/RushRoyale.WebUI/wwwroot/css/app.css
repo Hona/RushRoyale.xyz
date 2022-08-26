@@ -405,3 +405,7 @@ body {
     text-align: center;
     background-color: #888;
 }
+
+.fluid-height .mud-input>input.mud-input-root, .fluid-height div.mud-input-slot.mud-input-root {
+    height: auto;
+}

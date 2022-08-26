@@ -1,0 +1,98 @@
+﻿@page "/clan-management/register"
+@attribute [Authorize]
+
+@inject DiscordClient DiscordClient
+@inject ClanClient ClanClient
+@inject NavigationManager NavigationManager
+
+<MudText Typo="Typo.h4">
+    Register a Clan
+</MudText>
+
+<MudText Typo="Typo.subtitle1">
+    Link a clan you own that is managed through Discord. A role is used to link between the clan & your server.
+</MudText>
+
+@if (_guilds is null)
+{
+    <MudProgressLinear Indeterminate />
+}
+else
+{
+    <MudSelect Placeholder="Select a clan" Class="fluid-height" Variant="Variant.Outlined" Style="height: 128px" ValueChanged="HandleGuildChanged" T="UserGuild">
+        @foreach(var guild in _guilds)
+        {
+            <MudSelectItem Value="@guild">
+                <DiscordGuild Value="guild" Height="64"/>
+            </MudSelectItem>
+        }
+    </MudSelect>
+}
+
+@if (_selectedGuild is not null)
+{
+    @if (_guildRoles is null)
+    {
+        <MudProgressCircular Indeterminate />
+    }
+    else
+    {
+        <MudPaper>
+            <MudList Clickable>
+                @foreach (var guildRole in _guildRoles)
+                {
+                    <MudListItem>
+                        <ChildContent>
+                            @guildRole.Name
+                            <MudButton Class="mr-4" Style="float: right" Variant="Variant.Filled" Color="Color.Primary" OnClick="async () => await HandleRegisterClan(guildRole)">Register</MudButton>
+                        </ChildContent>
+                        <NestedList>
+                            @foreach (var roleUser in guildRole.Users)
+                            {
+                                <MudListItem>
+                                    <MudImage Src="@roleUser.IconUri" Height="16"/>
+                                    @roleUser.DisplayName
+                                </MudListItem>
+                            }
+                        </NestedList>
+                    </MudListItem>
+                }
+            </MudList>
+        </MudPaper>
+    }
+}
+
+
+
+@code {
+    private IReadOnlyList<UserGuild>? _guilds;
+
+    private UserGuild? _selectedGuild;
+
+    private IReadOnlyList<GuildRole>? _guildRoles;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _guilds = await DiscordClient.GetGuildsAsync();
+    }
+
+    private async Task HandleGuildChanged(UserGuild guild)
+    {
+        _selectedGuild = guild;
+        _guildRoles = null;
+
+        _guildRoles = await DiscordClient.GetGuildRolesAsync(guild.Id);
+    }
+
+    private async Task HandleRegisterClan(GuildRole guildRole)
+    {
+        await ClanClient.RegisterClanAsync(new RegisteredClan
+        {
+            DisplayName = $"{_selectedGuild?.Name ?? "Unknown Guild"} \u2022 @{guildRole.Name}",
+            RoleId = guildRole.Id,
+            GuildId = _selectedGuild?.Id ?? throw new InvalidOperationException()
+        });
+        
+        NavigationManager.NavigateTo("/clan-management/my-clans");
+    }
+}

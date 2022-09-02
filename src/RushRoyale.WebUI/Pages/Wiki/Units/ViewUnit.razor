@@ -1,8 +1,8 @@
 ﻿@page "/wiki/units/{Name}"
-@using RushRoyale.WebUI.Models
 @using Size = RushRoyale.WebUI.Shared.Size
 
 @inject DataService DataService
+@inject LocalizationService LocalizationService
 
 @if (_unit is null || _faction is null)
 {
@@ -56,9 +56,20 @@ else
         var units = await DataService.GetUnitsAsync();
         
         var name = Name.Replace('-', ' ');
-        _unit = units?.FirstOrDefault(x => x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+        var unit = units?.FirstOrDefault(x => x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
         var factions = await DataService.GetFactionsAsync();
         _faction = factions?.First(x => x.Value == _unit?.FactionType);
+
+        _unit = new Unit
+        {
+            Id = unit.Id,
+            Talents = unit.Talents,
+            Rarity = unit.Rarity,
+            FactionType = unit.FactionType,
+            IconUrl = unit.IconUrl,
+            Name = await LocalizationService.GetLocalizedValue(unit.Name),
+            Description = await LocalizationService.GetLocalizedValue(unit.Description)
+        };
     }
 
 }

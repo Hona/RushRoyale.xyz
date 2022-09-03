@@ -54,7 +54,7 @@ public class ClanService
 
         var embed = new EmbedBuilder()
             .WithTitle(clan.DisplayName)
-            .WithDescription("👋 Hi!\n\n\n ⚠️ Just a warning Tournament reset is nearing and you haven't used all your Sandals yet!")
+            .WithDescription("👋 Hi!\n\n\n ⚠️ Just a warning Tournament reset is nearing and you haven't used all your Sandals yet!\n\n🗣️ If you are unable to use all of your sandals today, please message your clan leadership team")
             .WithAuthor(currentUser)
             .WithCurrentTimestamp()
             .WithColor(Color.DarkOrange)

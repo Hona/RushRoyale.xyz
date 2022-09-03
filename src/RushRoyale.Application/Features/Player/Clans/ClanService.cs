@@ -21,6 +21,18 @@ public class ClanService
     
     public async Task RegisterClanAsync(RegisteredClan registeredClan)
     {
+        var user = _currentUserService.GetDiscordUser();
+        var guilds = await _discordService.GetUserGuildsAsync(user.Id);
+
+        var guild = guilds.First(x => x.Id == registeredClan.GuildId);
+
+        var guildUser = guild.GetUser(user.Id);
+
+        if (!guildUser.Roles.Any(x => x.Name.Contains("officer", StringComparison.OrdinalIgnoreCase)))
+        {
+            throw new Exception("You must be an officer!");
+        }
+
         await _genericRepository.CreateItemAsync(registeredClan,
             x => x.UserId!);
     }

@@ -1,4 +1,5 @@
 ﻿@page "/clan-management/my-clans/{GuildId:long}/{RoleId:long}"
+@using Size = MudBlazor.Size
 @attribute [Authorize]
 
 @inject ClanClient ClanClient
@@ -18,7 +19,12 @@ else
         <MudTextField @bind-Value="@_clan.DisplayName" Style="font-size: var(--mud-typography-h4-size); color: var(--mud-palette-primary) !important;" Class="mud-primary-text" Variant="Variant.Text"/>
         <MudButton Style="height: fit-content" Color="Color.Secondary" OnClick="SaveClanAsync">Save</MudButton>
     </div>
-    <MudTable Items="_clan?.RoleUsers" Hover Dense>
+    <MudTable Items="_clan.RoleUsers" Hover Dense Filter="x => FilterFunc(x, _memberSearchString)">
+        <ToolBarContent>
+            <MudText Typo="Typo.h6">Members: @_clan.RoleUsers.Count/50</MudText>
+            <MudSpacer />
+            <MudTextField @bind-Value="_memberSearchString" DebounceInterval="100" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+        </ToolBarContent>
         <HeaderContent>
             <MudTh>
                 <MudTableSortLabel SortBy="new Func<GuildUser, object>(x => x.DisplayName)"
@@ -35,10 +41,10 @@ else
         </HeaderContent>
         <RowTemplate>
             <MudTd DataLabel="User">
-                <DiscordUser Value="context" Height="48" />
+                <DiscordUser Value="context" Height="48"/>
             </MudTd>
             <MudTd>
-                
+
             </MudTd>
             <MudTd>
                 <ClanUserTools Clan="_clan" User="context"/>
@@ -64,6 +70,8 @@ else
     private Clan? _clan;
     
     private bool _loading;
+    
+    private string _memberSearchString = string.Empty;
 
     [Parameter]
     public long GuildId { get; set; }
@@ -100,6 +108,17 @@ else
         NavigationManager.NavigateTo("/clan-management/my-clans");
         
         _loading = false;
+    }
+    
+    private bool FilterFunc(GuildUser element, string searchString)
+    {
+        if (string.IsNullOrWhiteSpace(searchString))
+            return true;
+        if (element.DisplayName.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+            return true;
+        /*if (element.IGN.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+            return true;*/
+        return false;
     }
 
 }

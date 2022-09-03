@@ -13,17 +13,6 @@ public class DiscordService
         _discordSocketClient = discordSocketClient;
     }
 
-    private void EnsureClientConnected()
-    {
-        
-        return;
-        
-        if (_discordSocketClient.ConnectionState is not ConnectionState.Connected)
-        {
-            throw new ApplicationException("Discord client is not connected.");
-        }
-    }
-
     public static ulong GetDiscordId(string auth0Id)
     {
         const string auth0Prefix = "oauth2|discord|";
@@ -37,8 +26,6 @@ public class DiscordService
 
     public async Task<IReadOnlyList<SocketGuild>> GetUserGuildsAsync(ulong userId)
     {
-        EnsureClientConnected();
-
         var output = new List<SocketGuild>();
         foreach (var guild in _discordSocketClient.Guilds)
         {
@@ -55,8 +42,6 @@ public class DiscordService
     
     public IReadOnlyList<SocketRole> GetRoles(ulong guildId, bool excludeEveryone = true)
     {
-        EnsureClientConnected();
-        
         var guild = _discordSocketClient.GetGuild(guildId);
         
         var output = guild.Roles;
@@ -69,5 +54,36 @@ public class DiscordService
         return output.OrderByDescending(x => x.Position)
             .ToList()
             .AsReadOnly();
+    }
+
+    public IReadOnlyList<SocketGuildUser> GetRoleMembers(ulong guildId, ulong roleId)
+    {
+        var guild = _discordSocketClient.GetGuild(guildId);
+
+        var role = guild.Roles.SingleOrDefault(x => x.Id == roleId);
+
+        ArgumentNullException.ThrowIfNull(role);
+        
+        return role.Members
+            .ToList()
+            .AsReadOnly();
+    }
+
+    public IReadOnlyList<SocketGuildUser> LookupGuildUsers(ulong guildId, IEnumerable<ulong> userIds)
+    {
+        var guild = _discordSocketClient.GetGuild(guildId);
+        
+        return guild.Users
+            .Where(x => userIds.Contains(x.Id))
+            .ToList()
+            .AsReadOnly();
+    }
+
+    public SocketUser GetUser(ulong userId) => _discordSocketClient.GetUser(userId);
+
+    public async Task<IUserMessage> MessageUserAsync(ulong userId, string? message = null, Embed? embed = null)
+    {
+        var user = _discordSocketClient.GetUser(userId);
+        return await user.SendMessageAsync(message, embed: embed);
     }
 }

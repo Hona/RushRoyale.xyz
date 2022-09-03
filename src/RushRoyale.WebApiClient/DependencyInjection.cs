@@ -14,7 +14,8 @@ public static class DependencyInjection
                 sp.GetRequiredService<AuthorizationMessageHandler>()
                     .ConfigureHandler(
                         authorizedUrls: new[] { apiBaseUrl }
-                    ));
+                    )
+            );
 
         services.AddHttpClient<NewsClient>(ApiClient);
         services.AddHttpClient<ProfileClient>(ApiClient);

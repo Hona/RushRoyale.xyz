@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RushRoyale.Application.Features.Player.Profile;
 using RushRoyale.Application.Features.Player.Profile.Models;
+using RushRoyale.Application.Services;
 
 namespace RushRoyale.WebAPI.Controllers.Player;
 

@@ -1,0 +1,29 @@
+﻿@inject ClanClient ClanClient
+
+<MudMenu Icon="@Icons.Filled.MoreVert" AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight" Style="float: right">
+    <MudMenuItem Icon="@Icons.Material.Filled.Warning"
+                 OnClick="WarnUserAsync">
+        Warn about Unused Sandals
+    </MudMenuItem>
+</MudMenu>
+
+@code {
+
+    [Parameter]
+    public Clan Clan { get; set; } = null!;
+    
+    [Parameter]
+    public GuildUser User { get; set; } = null!;
+
+    protected override void OnParametersSet()
+    {
+        ArgumentNullException.ThrowIfNull(Clan);
+        ArgumentNullException.ThrowIfNull(User);
+    }
+
+    private async Task WarnUserAsync()
+    {
+        await ClanClient.WarnUserAsync(Clan.GuildId, Clan.RoleId, User.Id);
+    }
+
+}

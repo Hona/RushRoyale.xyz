@@ -20,7 +20,7 @@ else
                 </MudCardHeader>
                 <MudCardActions>
                     <MudSpacer />
-                    <MudButton Href="@("/clan-management/my-clans/" + clan.Id)">View</MudButton>
+                    <MudButton Href="@("/clan-management/my-clans/" + clan.GuildId + "/" + clan.RoleId)">View</MudButton>
                 </MudCardActions>
             </MudCard>
         }
@@ -28,7 +28,7 @@ else
 }
 
 @code {
-    private IReadOnlyList<RegisteredClan>? _clans;
+    private IReadOnlyList<Clan>? _clans;
 
     protected override async Task OnInitializedAsync()
     {

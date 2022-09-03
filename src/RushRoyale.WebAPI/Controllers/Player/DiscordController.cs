@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RushRoyale.Application.Services;
 using RushRoyale.Discord.Services;
+using RushRoyale.WebAPI.Utilities;
 using RushRoyale.WebAPI.ViewModels;
 
 namespace RushRoyale.WebAPI.Controllers.Player;
@@ -28,12 +30,7 @@ public class DiscordController : Controller
         
         var guilds = await _discordService.GetUserGuildsAsync(discordId);
             
-        var output = guilds.Select(x => new UserGuild
-            {
-                Id = x.Id,
-                Name = x.Name,
-                IconUrl = x.IconUrl
-            });
+        var output = guilds.Select(x => x.ToUserGuild());
 
         return Ok(output);
     }
@@ -44,18 +41,25 @@ public class DiscordController : Controller
     public IActionResult GetGuildRoles(ulong id)
     {
         var roles = _discordService.GetRoles(id)
-            .Select(x => new GuildRole()
+            .Select(x => new GuildRole
             {
                 Id = x.Id,
                 Name = x.Name,
-                Users = x.Members.Select(member => new GuildUser
-                {
-                    Id = member.Id,
-                    DisplayName = member.DisplayName ?? member.Nickname ?? member.Username,
-                    IconUri = member.GetGuildAvatarUrl() ?? member.GetDisplayAvatarUrl() ?? member.GetDefaultAvatarUrl()
-                }).ToList()
+                Users = x.Members
+                    .Select(member => member.ToGuildUser())
+                    .ToList()
             });
 
         return Ok(roles);
+    }
+    
+    [HttpGet("guilds/{guildId}/roles/{roleId}/members")]
+    [ProducesResponseType(typeof(List<GuildUser>), StatusCodes.Status200OK)]
+    public IActionResult GetGuildRoleMembers(ulong guildId, ulong roleId)
+    {
+        var roleMembers = _discordService.GetRoleMembers(guildId, roleId)
+            .Select(x => x.ToGuildUser());
+
+        return Ok(roleMembers);
     }
 }

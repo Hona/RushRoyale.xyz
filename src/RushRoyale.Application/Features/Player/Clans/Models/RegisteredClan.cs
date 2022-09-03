@@ -4,7 +4,7 @@ namespace RushRoyale.Application.Features.Player.Clans.Models;
 
 public class RegisteredClan : ICosmosDocument
 {
-    public string Id => UserId + GuildId +  RoleId;
+    public string Id => UserId + GuildId + RoleId;
     public string? UserId { get; set; } = string.Empty;
     public ulong GuildId { get; set; }
     public ulong RoleId { get; set; }

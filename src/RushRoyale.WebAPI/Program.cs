@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using RushRoyale.Application;
+using RushRoyale.Application.Services;
 using RushRoyale.Discord;
 using RushRoyale.Infrastructure;
-using RushRoyale.WebAPI;
 
 var builder = WebApplication.CreateBuilder(args);
 

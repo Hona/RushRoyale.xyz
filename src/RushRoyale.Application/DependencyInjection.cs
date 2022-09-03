@@ -11,7 +11,7 @@ public static class DependencyInjection
     {
         services.AddSingleton<NewsService>();
         services.AddSingleton<ProfileService>();
-        services.AddSingleton<ClanService>();
+        services.AddScoped<ClanService>();
 
         return services;
     }

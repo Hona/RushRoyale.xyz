@@ -409,3 +409,8 @@ body {
 .fluid-height .mud-input>input.mud-input-root, .fluid-height div.mud-input-slot.mud-input-root {
     height: auto;
 }
+
+.mud-dialog-content {
+    max-height: 85vh;
+    overflow-y: scroll
+}

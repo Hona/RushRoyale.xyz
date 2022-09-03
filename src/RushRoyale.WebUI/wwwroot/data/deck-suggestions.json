@@ -1,0 +1,131 @@
+﻿[
+  {
+    "Rating": 5,
+    "UnitIds": [
+      "pawn_berserk",
+      "pawn_corrosionchemist",
+      "pawn_pierrot",
+      "pawn_bombardier",
+      "pawn_reaper"
+    ]
+  },
+  {
+    "Rating": 4,
+    "UnitIds": [
+      "pawn_BladeDancer",
+      "pawn_corrosionchemist",
+      "pawn_grindstone",
+      "pawn_portalkeeper",
+      "pawn_bombardier"
+    ]
+  },
+  {
+    "Rating": 5,
+    "UnitIds": [
+      "pawn_boreas",
+      "pawn_corrosionchemist",
+      "pawn_reaper",
+      "pawn_priestess",
+      "pawn_bombardier"
+    ]
+  },
+  {
+    "Rating": 5,
+    "UnitIds": [
+      "pawn_corsair",
+      "pawn_reaper",
+      "pawn_headsman",
+      "pawn_priestess",
+      "pawn_corrosionchemist"
+    ]
+  },
+  {
+    "Rating": 4,
+    "UnitIds": [
+      "pawn_cultist",
+      "pawn_portalkeeper",
+      "pawn_corrosionchemist",
+      "pawn_bombardier",
+      "pawn_priestess"
+    ]
+  },
+  {
+    "Rating": 4,
+    "UnitIds": [
+      "pawn_demonhunter",
+      "pawn_bombardier",
+      "pawn_priestess",
+      "pawn_pierrot",
+      "pawn_corrosionchemist"
+    ]
+  },
+  {
+    "Rating": 5,
+    "UnitIds": [
+      "pawn_demonologist",
+      "pawn_engineer",
+      "pawn_pierrot",
+      "pawn_priestess",
+      "pawn_corrosionchemist"
+    ]
+  },
+  {
+    "Rating": 5,
+    "UnitIds": [
+      "pawn_dryad",
+      "pawn_engineer",
+      "pawn_pierrot",
+      "pawn_corrosionchemist",
+      "pawn_cauldron"
+    ]
+  },
+  {
+    "Rating": 6,
+    "UnitIds": [
+      "pawn_frostbite",
+      "pawn_bombardier",
+      "pawn_catapult",
+      "pawn_teleport",
+      "pawn_thundercaller"
+    ]
+  },
+  {
+    "Rating": 5,
+    "UnitIds": [
+      "pawn_harlequin",
+      "pawn_engineer",
+      "pawn_pierrot",
+      "pawn_priestess",
+      "pawn_corrosionchemist"
+    ]
+  },
+  {
+    "Rating": 4,
+    "UnitIds": [
+      "pawn_inquisitor",
+      "pawn_grindstone",
+      "pawn_portalkeeper",
+      "pawn_corrosionchemist",
+      "pawn_pierrot"
+    ]
+  },
+  {
+    "Rating": 6,
+    "UnitIds": [
+      "pawn_jinx",
+      "pawn_teleport",
+      "pawn_thundercaller",
+      "pawn_bombardier",
+      "pawn_reaper"
+    ]
+  },
+  {
+    "Rating": 4,
+    "UnitIds": [
+      "pawn_knightstatue",
+      "pawn_pierrot",
+      "pawn_portalkeeper",
+      "pawn_corrosionchemist"
+    ]
+  }
+]

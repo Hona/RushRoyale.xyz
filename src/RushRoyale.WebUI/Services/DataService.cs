@@ -1,6 +1,7 @@
 ﻿using System.Net.Http.Json;
 using RushRoyale.WebUI.Models;
 using RushRoyale.WebUI.Models.DataMine;
+using RushRoyale.WebUI.Models.DeckSuggestions;
 
 namespace RushRoyale.WebUI.Services;
 
@@ -45,5 +46,7 @@ public class DataService
     
     public async Task<LocalizationDictionary?> GetLocalizationsAsync(CancellationToken cancellationToken = default)
         => await GetAsync<LocalizationDictionary>("data-mine/localizations.json", cancellationToken);
-
+    
+    public async Task<IReadOnlyList<DeckSuggestion>?> GetDeckSuggestionsAsync(CancellationToken cancellationToken = default)
+        => await GetListAsync<DeckSuggestion>("data/deck-suggestions.json", cancellationToken);
 }

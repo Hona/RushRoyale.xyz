@@ -1,0 +1,132 @@
+﻿@using RushRoyale.WebUI.Models.DeckSuggestions
+
+@inject DataService DataService
+
+@if (_units is null)
+{
+    <MudProgressCircular Indeterminate />
+}
+else
+{
+    <MudDataGrid EditDialogOptions="new DialogOptions{MaxWidth = MaxWidth.ExtraLarge}" Class="data-grid-scroll-dialog" ReadOnly="false" T="DeckSuggestion" Items="Items" EditMode="DataGridEditMode.Form" EditTrigger="DataGridEditTrigger.OnRowClick" StartedEditingItem="HandleStartEditingItem" Hover Dense>
+        <Columns>
+            <Column T="DeckSuggestion" Field="@nameof(DeckSuggestion.Rating)" IsEditable>
+                <EditTemplate>
+                    <MudSelect @bind-Value="context.Item.Rating" Required Variant="Variant.Outlined" Margin="Margin.Dense" Label="@nameof(Rating)" Class="mt-4" Style="width: 65vw">
+                        @foreach(var rating in Enum.GetValues<Rating>())
+                        {
+                            <MudSelectItem Value="@rating">
+                                @rating.Humanize(LetterCasing.Title)
+                            </MudSelectItem>
+                        }
+                    </MudSelect>
+                </EditTemplate>
+            </Column>
+            <Column T="DeckSuggestion" Field="@nameof(DeckSuggestion.UnitIds)" IsEditable>
+                <CellTemplate>
+                    <div class="d-flex">
+                        @foreach (var unitId in context.Item.UnitIds)
+                        {
+                            <UnitCard Value="_units.First(x => x.Id == unitId)"/>
+                        }
+                    </div>
+                </CellTemplate>
+                <EditTemplate>
+                    <MudDropContainer T="DroppedUnit" ItemsSelector="GetItemsSelector" Items="_droppedUnits" Class="d-flex flex-wrap flex-grow-1" ItemDropped="HandleUnitDropped">
+                        <ChildContent>
+                            <MudDropZone T="DroppedUnit" Identifier="All Units" Class="rounded mud-background-gray pa-6 ma-8 flex-grow-1 d-flex flex-wrap gap-2">
+                                <MudText Typo="Typo.h6" Class="mb-4" Style="width: 100%">All Units</MudText>
+                             </MudDropZone>
+                            <MudDropZone T="DroppedUnit" Identifier="Deck" Class="rounded mud-background-gray pa-6 ma-8 d-flex flex-wrap gap-4">
+                                <MudText Typo="Typo.h6" Class="mb-4" Style="width: 100%" >Deck</MudText>
+                            </MudDropZone>
+                        </ChildContent>
+                        <ItemRenderer Context="renderContext">
+                            <MudPaper Class="d-flex justify-center align-center" Style="width: fit-content;">
+                                <UnitCard Value="renderContext.Unit"/>
+                                <MudIconButton Icon="@Icons.Filled.DragIndicator"/>
+                            </MudPaper>
+                        </ItemRenderer>
+                    </MudDropContainer>
+                </EditTemplate>
+            </Column>
+        </Columns>
+    </MudDataGrid>
+}
+
+@code {
+    [Parameter]
+    public List<DeckSuggestion> Items { get; set; } = null!;
+    
+    [Parameter]
+    public EventCallback<List<DeckSuggestion>> ItemsChanged { get; set; }
+    
+    private IReadOnlyList<Unit>? _units;
+    private IReadOnlyList<DroppedUnit> _droppedUnits;
+
+    private DeckSuggestion _currentlyEditing;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _units = await DataService.GetUnitsAsync() ?? throw new InvalidOperationException();
+    }
+
+    protected override void OnParametersSet()
+    {
+        if (Items is null)
+        {
+            throw new ArgumentNullException(nameof(Items));
+        }
+    }
+
+    private class DroppedUnit
+    {
+        public string DropzoneId { get; set; }
+        public Unit Unit { get; set; }
+    }
+
+    private void HandleStartEditingItem(DeckSuggestion deckSuggestion)
+    {
+        _droppedUnits = _units.Select(x => new DroppedUnit()
+        {
+            Unit = x,
+            DropzoneId = deckSuggestion.UnitIds.Any(id => id == x.Id) ? "Deck" : "All Units"
+        }).ToList();
+
+        _currentlyEditing = deckSuggestion;
+    }
+
+    private bool GetItemsSelector(DroppedUnit droppedUnit, string dropzoneId)
+    {
+        return droppedUnit.DropzoneId == dropzoneId;
+    }
+
+    private void HandleUnitDropped(MudItemDropInfo<DroppedUnit> droppedUnit)
+    {
+        droppedUnit.Item.DropzoneId = droppedUnit.DropzoneIdentifier;
+        
+        var droppedUnitId = droppedUnit.Item.Unit.Id;
+
+        var currentlyContainsUnit = _currentlyEditing.UnitIds.Contains(droppedUnitId);
+
+        if (droppedUnit.DropzoneIdentifier == "Deck")
+        {
+            if (currentlyContainsUnit)
+            {
+                return;
+            }
+
+            _currentlyEditing.UnitIds.Add(droppedUnitId);
+        }
+        else
+        {
+            if (!currentlyContainsUnit)
+            {
+                return;
+            }
+
+            _currentlyEditing.UnitIds.Remove(droppedUnitId);
+        }
+    }
+
+}

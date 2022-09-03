@@ -156,42 +156,42 @@
     "talents": {
       "9": [
         {
-          "name": "pawn_rogue_talent_name_1a",
+          "name": "pawn_rogue_talent_name_1a\t",
           "description": "pawn_rogue_talent_description_1a",
           "icon": "Icon_PawnRogue_Talents_1a"
         },
         {
-          "name": "pawn_rogue_talent_name_1b",
-          "description": "pawn_rogue_talent_description_1b",
+          "name": "pawn_rogue_talent_name_1b\t",
+          "description": "pawn_rogue_talent_description_1b\t",
           "icon": "Icon_PawnRogue_Talents_1b"
         }
       ],
       "11": [
         {
-          "name": "pawn_rogue_talent_name_2a",
+          "name": "pawn_rogue_talent_name_2a\t",
           "description": "pawn_rogue_talent_description_2a",
           "icon": "Icon_PawnRogue_Talents_2a"
         },
         {
-          "name": "pawn_rogue_talent_name_2b",
+          "name": "pawn_rogue_talent_name_2b\t",
           "description": "pawn_rogue_talent_description_2b",
           "icon": "Icon_PawnRogue_Talents_2b"
         }
       ],
       "13": [
         {
-          "name": "pawn_rogue_talent_name_3a",
-          "description": "pawn_rogue_talent_description_3a",
+          "name": "pawn_rogue_talent_name_3a\t",
+          "description": "pawn_rogue_talent_description_3a\t",
           "icon": "Icon_PawnRogue_Talents_3a"
         },
         {
-          "name": "pawn_rogue_talent_name_3b",
-          "description": "pawn_rogue_talent_description_3b",
+          "name": "pawn_rogue_talent_name_3b\t",
+          "description": "pawn_rogue_talent_description_3b\t",
           "icon": "Icon_PawnRogue_Talents_3b"
         }
       ],
       "15": {
-        "name": "pawn_rogue_talent_name_4",
+        "name": "pawn_rogue_talent_name_4\t",
         "description": "pawn_rogue_talent_description_4",
         "icon": "Icon_PawnRogue_Talents_4"
       }
@@ -240,7 +240,7 @@
         },
         {
           "name": "pawn_cauldron_talent_name_1b",
-          "description": "pawn_cauldron_talent_description_1b",
+          "description": "pawn_cauldron_talent_description_1b\t",
           "icon": "Icon_PawnCauldron_Talents_1b"
         }
       ],

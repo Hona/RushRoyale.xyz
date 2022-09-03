@@ -1,6 +1,7 @@
 ﻿@using Index = RushRoyale.WebUI.Pages.Index
 @using System.Reflection.Emit
 @using System.Reflection
+@using RushRoyale.WebUI.Models.DeckSuggestions
 @using Size = MudBlazor.Size
 @using RushRoyale.WebUI.Pages.Developer.DataGrids
 
@@ -8,6 +9,9 @@
 {
     case not null when _itemType == typeof(Unit):
         <UnitDataGrid Items="@(ItemsAs<Unit>())" />
+        break;
+    case not null when _itemType == typeof(DeckSuggestion):
+        <DeckSuggestionDataGrid Items="@(ItemsAs<DeckSuggestion>())"/>
         break;
     default:
         throw new ArgumentOutOfRangeException(nameof(_itemType));
@@ -19,8 +23,6 @@
     public List<object> Items { get; set; } = null!;
 
     private Type? _itemType;
-
-
     
     protected override void OnParametersSet()
     {

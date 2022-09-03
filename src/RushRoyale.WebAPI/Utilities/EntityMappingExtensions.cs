@@ -11,7 +11,8 @@ public static class EntityMappingExtensions
         Id = clan.Id,
         DisplayName = clan.DisplayName,
         GuildId = clan.GuildId,
-        RoleId = clan.RoleId
+        RoleId = clan.RoleId,
+        SandalsWarningMessage = clan.SandalsWarningMessage
     };
 
     public static GuildUser ToGuildUser(this SocketGuildUser user) => new()

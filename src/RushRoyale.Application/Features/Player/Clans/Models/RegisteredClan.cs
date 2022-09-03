@@ -11,6 +11,7 @@ public class RegisteredClan : ICosmosDocument
 
     public string DisplayName { get; set; } = string.Empty;
 
+    public string? SandalsWarningMessage { get; set; }
     public List<ulong> WhitelistedUsers { get; set; } = new();
     public List<ulong> BlacklistedUsers { get; set; } = new();
 }

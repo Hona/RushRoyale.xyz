@@ -89,6 +89,7 @@ public class ClanController : Controller
             GuildId = guildId,
             RoleId = roleId,
             UserId = userId,
+            SandalsWarningMessage = clan.SandalsWarningMessage,
             BlacklistedUsers = clan.BlacklistedUsers.Select(x => x.Id).ToList(),
             WhitelistedUsers = clan.WhitelistedUsers.Select(x => x.Id).ToList()
         });

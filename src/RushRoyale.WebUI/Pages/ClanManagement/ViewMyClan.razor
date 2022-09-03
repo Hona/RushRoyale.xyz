@@ -16,7 +16,7 @@ else
 {
     <div class="d-flex align-end mb-4 gap-2">
         <MudTextField @bind-Value="@_clan.DisplayName" Style="font-size: var(--mud-typography-h4-size); color: var(--mud-palette-primary) !important;" Class="mud-primary-text" Variant="Variant.Text"/>
-        <MudButton Style="height: fit-content" Color="Color.Secondary" OnClick="RenameAsync">Save</MudButton>
+        <MudButton Style="height: fit-content" Color="Color.Secondary" OnClick="SaveClanAsync">Save</MudButton>
     </div>
     <MudTable Items="_clan?.RoleUsers" Hover Dense>
         <HeaderContent>
@@ -47,6 +47,13 @@ else
     </MudTable>
     
     <MudDivider Class="my-6"/>
+
+    <div class="d-flex align-end mb-4 gap-2">
+        <MudTextField @bind-Value="@_clan.SandalsWarningMessage" Label="Sandals Warning Message" Placeholder="Using Default..." Class="mud-primary-text" Variant="Variant.Text"/>
+        <MudButton Style="height: fit-content" Color="Color.Secondary" OnClick="SaveClanAsync">Save</MudButton>
+    </div>
+    
+    <MudDivider Class="my-6"/>
     
     <MudButton Color="Color.Error" OnClick="DeleteClanAsync">
         Delete Clan
@@ -73,7 +80,7 @@ else
         _loading = false;
     }
 
-    private async Task RenameAsync()
+    private async Task SaveClanAsync()
     {
         _loading = true;
 

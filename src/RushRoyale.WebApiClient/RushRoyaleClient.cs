@@ -2039,6 +2039,11 @@ namespace RushRoyale.WebApiClient
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         public string DisplayName { get; set; }
 
+        [System.Text.Json.Serialization.JsonPropertyName("sandalsWarningMessage")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]   
+        public string SandalsWarningMessage { get; set; }
+
         [System.Text.Json.Serialization.JsonPropertyName("whitelistedUsers")]
 
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.Never)]   
@@ -2078,6 +2083,11 @@ namespace RushRoyale.WebApiClient
         [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.Never)]   
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         public string DisplayName { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("sandalsWarningMessage")]
+
+        [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]   
+        public string SandalsWarningMessage { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("whitelistedUsers")]
 

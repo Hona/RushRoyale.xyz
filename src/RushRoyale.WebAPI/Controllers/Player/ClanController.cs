@@ -32,7 +32,7 @@ public class ClanController : Controller
         var userId = _currentUserService.GetUserId();
 
         clan.UserId = userId;
-        await _clanService.RegisterClanAsync(clan);
+        await _clanService.StoreClanAsync(clan);
 
         return NoContent();
     }
@@ -75,6 +75,36 @@ public class ClanController : Controller
             .ToList();
         
         return Ok(output);
+    }
+    
+    [HttpPut("guilds/{guildId}/roles/{roleId}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<IActionResult> UpdateClan(ulong guildId, ulong roleId, [FromBody] Clan clan)
+    {
+        var userId = _currentUserService.GetUserId();
+
+        await _clanService.StoreClanAsync(new RegisteredClan
+        {
+            DisplayName = clan.DisplayName,
+            GuildId = guildId,
+            RoleId = roleId,
+            UserId = userId,
+            BlacklistedUsers = clan.BlacklistedUsers.Select(x => x.Id).ToList(),
+            WhitelistedUsers = clan.WhitelistedUsers.Select(x => x.Id).ToList()
+        });
+
+        return NoContent();
+    }
+    
+    [HttpDelete("guilds/{guildId}/roles/{roleId}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<IActionResult> DeleteClan(ulong guildId, ulong roleId)
+    {
+        var userId = _currentUserService.GetUserId();
+
+        await _clanService.DeleteClanAsync(userId, guildId, roleId);
+
+        return NoContent();
     }
 
     [HttpPost("guilds/{guildId}/roles/{roleId}/users/{userId}/warn")]

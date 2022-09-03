@@ -19,7 +19,7 @@ public class ClanService
         _currentUserService = currentUserService;
     }
     
-    public async Task RegisterClanAsync(RegisteredClan registeredClan)
+    public async Task StoreClanAsync(RegisteredClan registeredClan)
     {
         var user = _currentUserService.GetDiscordUser();
         var guilds = await _discordService.GetUserGuildsAsync(user.Id);
@@ -33,7 +33,7 @@ public class ClanService
             throw new Exception("You must be an officer!");
         }
 
-        await _genericRepository.CreateItemAsync(registeredClan,
+        await _genericRepository.CreateOrUpdateItemAsync(registeredClan,
             x => x.UserId!);
     }
 
@@ -45,7 +45,7 @@ public class ClanService
 
     public async Task<RegisteredClan> GetClan(string userId, ulong guildId, ulong roleId)
     {
-        var output = await _genericRepository.GetItemAsync<RegisteredClan>(new RegisteredClan
+        var output = await _genericRepository.GetItemAsync(new RegisteredClan
         {
             UserId = userId,
             GuildId = guildId,
@@ -56,6 +56,16 @@ public class ClanService
         ArgumentNullException.ThrowIfNull(output);
         
         return output;
+    }
+
+    public async Task DeleteClanAsync(string userId, ulong guildId, ulong roleId)
+    {
+        await _genericRepository.DeleteItemAsync(new RegisteredClan
+        {
+            UserId = userId,
+            GuildId = guildId,
+            RoleId = roleId
+        }, x => x.UserId!);
     }
 
     public async Task WarnUserAsync(string currentUserId, ulong guildId, ulong roleId, ulong userId)

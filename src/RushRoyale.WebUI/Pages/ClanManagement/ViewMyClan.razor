@@ -1,20 +1,24 @@
 ﻿@page "/clan-management/my-clans/{GuildId:long}/{RoleId:long}"
-@using Size = MudBlazor.Size
 @attribute [Authorize]
 
 @inject ClanClient ClanClient
+@inject NavigationManager NavigationManager
 
 @if (_loading)
 {
     <MudProgressLinear Indeterminate />
 }
+else if (_clan is null)
+{
+    <span>Clan is null...</span>
+}
 else
 {
-    <MudText Typo="Typo.h4" Class="mb-4" Color="Color.Primary">
-        @_clan?.DisplayName
-    </MudText>
-    
-    <MudTable Items="_clan?.RoleUsers" Hover>
+    <div class="d-flex align-end mb-4 gap-2">
+        <MudTextField @bind-Value="@_clan.DisplayName" Style="font-size: var(--mud-typography-h4-size); color: var(--mud-palette-primary) !important;" Class="mud-primary-text" Variant="Variant.Text"/>
+        <MudButton Style="height: fit-content" Color="Color.Secondary" OnClick="RenameAsync">Save</MudButton>
+    </div>
+    <MudTable Items="_clan?.RoleUsers" Hover Dense>
         <HeaderContent>
             <MudTh>
                 <MudTableSortLabel SortBy="new Func<GuildUser, object>(x => x.DisplayName)"
@@ -41,6 +45,12 @@ else
             </MudTd>
         </RowTemplate>
     </MudTable>
+    
+    <MudDivider Class="my-6"/>
+    
+    <MudButton Color="Color.Error" OnClick="DeleteClanAsync">
+        Delete Clan
+    </MudButton>
 }
 
 @code {
@@ -62,4 +72,27 @@ else
 
         _loading = false;
     }
+
+    private async Task RenameAsync()
+    {
+        _loading = true;
+
+        await ClanClient.UpdateClanAsync(GuildId, RoleId, _clan);
+
+        _clan = await ClanClient.GetClanAsync(GuildId, RoleId);
+        
+        _loading = false;
+    }
+
+    private async Task DeleteClanAsync()
+    {
+        _loading = true;
+
+        await ClanClient.DeleteClanAsync(GuildId, RoleId);
+
+        NavigationManager.NavigateTo("/clan-management/my-clans");
+        
+        _loading = false;
+    }
+
 }

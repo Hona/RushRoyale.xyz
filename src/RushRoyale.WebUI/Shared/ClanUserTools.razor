@@ -1,4 +1,5 @@
 ﻿@inject ClanClient ClanClient
+@inject ISnackbar Snackbar
 
 <MudMenu Icon="@Icons.Filled.MoreVert" AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight" Style="float: right">
     <MudMenuItem Icon="@Icons.Material.Filled.Warning"
@@ -24,6 +25,8 @@
     private async Task WarnUserAsync()
     {
         await ClanClient.WarnUserAsync(Clan.GuildId, Clan.RoleId, User.Id);
+        
+        Snackbar.Add($"{User.DisplayName} was warned!", Severity.Success);
     }
 
 }

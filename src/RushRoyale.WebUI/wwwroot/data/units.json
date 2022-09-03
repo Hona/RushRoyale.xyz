@@ -27,43 +27,43 @@
     "talents": {
       "9": [
         {
-          "name": "Deep Freeze",
-          "description": "Every 15 attacks, the Cold Mage freezes monsters for 4s. This effect activates once.",
+          "name": "pawn_magecold_talent_name_1a",
+          "description": "pawn_magecold_talent_description_1a",
           "icon": "Icon_PawnMageCold_Talents_1a"
         },
         {
-          "name": "Fierce Cold",
-          "description": "Slows the target by an additional 5% on top of the max amount.",
+          "name": "pawn_magecold_talent_name_1b",
+          "description": "pawn_magecold_talent_description_1b",
           "icon": "Icon_PawnMageCold_Talents_1b"
         }
       ],
       "11": [
         {
-          "name": "Heat Leak",
-          "description": "When the Cold mage merges, a random unit on the opponent\u0027s field freezes for 6s. Duration increases with the merge rank. Does not work in Co-Op and Clan Tournament Attack.",
+          "name": "pawn_magecold_talent_name_2a",
+          "description": "pawn_magecold_talent_description_2a",
           "icon": "Icon_PawnMageCold_Talents_2a"
         },
         {
-          "name": "Flash of Frost",
-          "description": "When the Cold Mage merges, 3 monsters on the path are slowed by the max amount. The number of monsters increases based on the Cold Mage\u0027s merge rank.",
+          "name": "pawn_magecold_talent_name_2b",
+          "description": "pawn_magecold_talent_description_2b",
           "icon": "Icon_PawnMageCold_Talents_2b"
         }
       ],
       "13": [
         {
-          "name": "Blizzard",
-          "description": "Has a 7% chance on attack to affect the taret with a blizzard, slowing monsters in the area.",
+          "name": "pawn_magecold_talent_name_3a",
+          "description": "pawn_magecold_talent_description_3a",
           "icon": "Icon_PawnMageCold_Talents_3a"
         },
         {
-          "name": "Cracking Ice",
-          "description": "Frozen targets with health below 30% take 20% more damage.",
+          "name": "pawn_magecold_talent_name_3b",
+          "description": "pawn_magecold_talent_description_3b",
           "icon": "Icon_PawnMageCold_Talents_3b"
         }
       ],
       "15": {
-        "name": "Deadly Cold",
-        "description": "Frozen targets die if their health drops below 5%.",
+        "name": "pawn_magecold_talent_name_4",
+        "description": "pawn_magecold_talent_description_4",
         "icon": "Icon_PawnMageCold_Talents_4"
       }
     }

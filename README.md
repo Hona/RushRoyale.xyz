@@ -8,6 +8,8 @@ A companion site build for Rush Royale.
 
 ---
 
+## Gallery
+
 ![](docs/img/preview-01.png)
 ![](docs/img/preview-02.png)
 ![](docs/img/preview-03.png)

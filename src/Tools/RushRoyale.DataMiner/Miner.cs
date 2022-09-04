@@ -103,12 +103,12 @@ public class Miner
         Directory.CreateDirectory(Paths.OutputFolder);
         var localizationsPath = Path.Join(Paths.OutputFolder, "localizations.json");
 
-// Sort for the UI
+        // Sort for the UI
         var sortedLocalizationDictionary = localizationDictionary
             .OrderBy(x => x.Key)
             .ToImmutableSortedDictionary();
 
-// Additional bytes still exist if you dont clear first
+        // Additional bytes still exist if you dont clear first
         File.Delete(localizationsPath);
         await using (var outputLocalizationStream = File.OpenWrite(localizationsPath))
         {

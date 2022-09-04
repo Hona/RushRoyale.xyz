@@ -1,0 +1,44 @@
+﻿@page "/player-tools/random-deck-generator"
+
+@inject DataService DataService
+
+@if (_allUnits is null || _randomDeck is null)
+{
+    <MudProgressCircular Indeterminate />
+}
+else
+{
+    <MudButton OnClick="GenerateRandomDeck">Roll Again</MudButton>
+
+    <MudDivider Class="my-4"/>
+    
+    <MudPaper Class="d-flex pa-4" Style="width: fit-content">
+        @foreach (var unit in _randomDeck)
+        {
+            <UnitCard Value="unit" />
+        }
+    </MudPaper>
+}
+
+
+@code {
+    private IReadOnlyList<Unit>? _allUnits;
+
+    private List<Unit>? _randomDeck;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _allUnits = await DataService.GetUnitsAsync();
+        
+        GenerateRandomDeck();
+    }
+
+    private void GenerateRandomDeck()
+    {
+        _randomDeck = _allUnits
+            .OrderBy(_ => Guid.NewGuid())
+            .Take(5)
+            .ToList();
+    }
+
+}

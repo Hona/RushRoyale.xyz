@@ -112,7 +112,10 @@ public class Miner
         File.Delete(localizationsPath);
         await using (var outputLocalizationStream = File.OpenWrite(localizationsPath))
         {
-            await JsonSerializer.SerializeAsync(outputLocalizationStream, sortedLocalizationDictionary);
+            await JsonSerializer.SerializeAsync(outputLocalizationStream, sortedLocalizationDictionary, options: new JsonSerializerOptions()
+            {
+                WriteIndented = true
+            });
         }
 
         Console.WriteLine($"Keys in Index: {localizationKeysCount}, keys data mined: {sortedLocalizationDictionary.Count}");
